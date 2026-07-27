@@ -16,6 +16,11 @@
     display:grid;grid-template-columns:300px 1fr;gap:24px;
     align-items:start;
   }
+  .sidebar-toggle-mobile{
+    display:none;width:100%;text-align:center;padding:12px;margin-bottom:14px;
+    background:var(--bg-panel);border:1px solid var(--line);border-radius:12px;
+    color:var(--text);font-family:'Cairo',sans-serif;font-weight:600;font-size:14px;cursor:pointer;
+  }
   .course-sidebar{
     background:var(--bg-panel);border:1px solid var(--line);border-radius:16px;
     padding:18px;position:sticky;top:100px;
@@ -50,49 +55,85 @@
   .lesson-link.exam-link{color:var(--gold);font-weight:600;}
   .lesson-link.exam-link .check{border-color:var(--gold);}
   .lesson-link.exam-link.done .check{background:var(--gold);color:#03110f;}
+  .preview-tag{font-size:10px;color:var(--gold);border:1px solid var(--gold);border-radius:999px;padding:1px 6px;margin-inline-start:auto;font-family:'JetBrains Mono',monospace;}
 
   .course-main{
     background:var(--bg-panel);border:1px solid var(--line);border-radius:16px;
     padding:36px;min-height:420px;
   }
-  .lesson-eyebrow{font-size:12px;color:var(--teal);font-family:'JetBrains Mono',monospace;margin-bottom:10px;}
+  .lesson-eyebrow{font-size:12px;color:var(--teal);font-family:'JetBrains Mono',monospace;margin-bottom:10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
   .lesson-title{font-size:26px;font-weight:900;margin-bottom:18px;font-family:'Cairo',sans-serif;}
-  .lesson-content{font-size:16px;color:var(--text);line-height:2;margin-bottom:34px;}
+  .lesson-content{font-size:16px;color:var(--text);line-height:2;margin-bottom:28px;}
   .lesson-nav{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:22px;flex-wrap:wrap;}
+  .lesson-nav .nav-btn-label{display:block;font-size:11px;color:var(--text-dim);margin-bottom:2px;}
   .progress-bar-outer{height:6px;background:var(--bg-panel-2);border-radius:999px;overflow:hidden;margin-bottom:20px;}
   .progress-bar-inner{height:100%;background:var(--teal);border-radius:999px;transition:width .3s;}
 
-  .lesson-media{
-    position:relative;border-radius:14px;overflow:hidden;margin-bottom:24px;
-    border:1px solid var(--line);background:var(--bg-panel-2);
-  }
-  .lesson-media video, .lesson-media img{width:100%;display:block;max-height:340px;object-fit:cover;background:#000;}
-  .media-placeholder{
-    height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    gap:8px;color:var(--text-dim);font-size:13px;
-  }
-  .media-placeholder .icon{font-size:34px;}
-  .watermark{
-    position:absolute;bottom:10px;left:12px;
-    background:rgba(5,13,20,0.72);backdrop-filter:blur(4px);
-    padding:5px 12px;border-radius:8px;
-    font-family:'Cairo',sans-serif;font-weight:700;font-size:12px;color:var(--teal);
-    display:flex;align-items:center;gap:6px;
+  /* video player */
+  .video-block{position:relative;border-radius:14px;overflow:hidden;margin-bottom:22px;border:1px solid var(--line);background:#000;}
+  .video-block video, .video-block iframe{width:100%;aspect-ratio:16/9;display:block;border:none;}
+  .video-watermark{
+    position:absolute;bottom:10px;left:12px;background:rgba(5,13,20,0.72);backdrop-filter:blur(4px);
+    padding:5px 12px;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;font-size:12px;color:var(--teal);
+    display:flex;align-items:center;gap:6px;pointer-events:none;
   }
 
-  .comments-section{border-top:1px solid var(--line);padding-top:24px;margin-top:10px;}
-  .comments-section h4{font-size:16px;margin-bottom:6px;font-family:'Cairo',sans-serif;}
-  .comments-note{font-size:12px;color:var(--gold);margin-bottom:16px;}
-  .comment-form{display:flex;gap:10px;margin-bottom:20px;}
-  .comment-form input{
-    flex:1;padding:11px 14px;border-radius:10px;border:1px solid var(--line);
-    background:var(--bg-deep);color:var(--text);font-size:13.5px;font-family:inherit;
+  /* image gallery */
+  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:22px;}
+  .gallery-item{
+    position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);
+    cursor:zoom-in;background:var(--bg-panel-2);
   }
-  .comment-item{background:var(--bg-panel-2);border-radius:10px;padding:12px 14px;margin-bottom:10px;}
-  .comment-item .c-meta{font-size:11.5px;color:var(--text-dim);margin-bottom:4px;font-family:'JetBrains Mono',monospace;}
-  .comment-item .c-body{font-size:14px;}
-  .empty-comments{color:var(--text-dim);font-size:13px;font-style:italic;}
+  .gallery-item img{width:100%;height:120px;object-fit:cover;display:block;}
+  .gallery-caption{
+    font-size:11px;color:var(--text-dim);padding:6px 8px;background:var(--bg-panel-2);
+  }
+  .gallery-watermark{
+    position:absolute;top:6px;left:8px;background:rgba(5,13,20,0.72);color:var(--teal);
+    font-size:10px;padding:2px 8px;border-radius:6px;font-family:'Cairo',sans-serif;font-weight:700;
+  }
+  .lightbox-overlay{
+    display:none;position:fixed;inset:0;z-index:400;background:rgba(2,6,9,0.92);
+    align-items:center;justify-content:center;padding:30px;flex-direction:column;gap:14px;
+  }
+  .lightbox-overlay img{max-width:90vw;max-height:75vh;border-radius:12px;}
+  .lightbox-caption{color:var(--text);font-size:14px;text-align:center;max-width:600px;}
+  .lightbox-close{
+    position:absolute;top:20px;inset-inline-end:24px;background:var(--bg-panel);border:1px solid var(--line);
+    color:var(--text);width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:18px;
+  }
 
+  /* flashcards / accordion */
+  .flashcards{margin-bottom:26px;display:flex;flex-direction:column;gap:8px;}
+  .flashcard{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bg-panel-2);}
+  .flashcard-q{
+    padding:14px 16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;
+    font-family:'Cairo',sans-serif;font-weight:600;font-size:14.5px;
+  }
+  .flashcard-q .fc-caret{transition:transform .2s;font-size:12px;color:var(--teal);}
+  .flashcard.open .fc-caret{transform:rotate(180deg);}
+  .flashcard-a{display:none;padding:0 16px 16px;font-size:14px;color:var(--text-dim);line-height:1.8;}
+  .flashcard.open .flashcard-a{display:block;}
+
+  /* quiz */
+  .quiz-block{border-top:1px solid var(--line);padding-top:24px;margin-top:10px;}
+  .quiz-block h4{font-size:16px;margin-bottom:14px;font-family:'Cairo',sans-serif;}
+  .quiz-opt{display:block;padding:12px 14px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;cursor:pointer;font-size:14px;transition:border-color .15s,background .15s;}
+  .quiz-opt:hover{border-color:var(--teal);}
+  .quiz-opt.selected{border-color:var(--teal);background:rgba(45,212,191,0.08);}
+  .quiz-opt.correct{border-color:var(--up);background:rgba(61,220,151,0.1);}
+  .quiz-opt.wrong{border-color:var(--down);background:rgba(229,107,107,0.1);}
+  .quiz-feedback{margin-top:12px;font-size:14px;padding:12px 14px;border-radius:10px;}
+  .quiz-feedback.pass{background:rgba(61,220,151,0.08);border:1px solid var(--up);color:var(--up);}
+  .quiz-feedback.fail{background:rgba(229,107,107,0.08);border:1px solid var(--down);color:var(--down);}
+
+  /* preview banner */
+  .preview-banner{
+    background:rgba(212,162,76,0.1);border:1px solid rgba(212,162,76,.35);color:var(--gold);
+    font-size:13px;padding:10px 16px;border-radius:10px;margin-bottom:20px;
+  }
+
+  /* exam (level completion) */
   .exam-q{margin-bottom:26px;padding-bottom:22px;border-bottom:1px solid var(--line);}
   .exam-q:last-child{border-bottom:none;}
   .exam-q h4{font-size:15.5px;margin-bottom:14px;font-weight:600;}
@@ -101,13 +142,13 @@
   .exam-opt.selected{border-color:var(--teal);background:rgba(45,212,191,0.08);}
   .exam-opt.correct{border-color:var(--up);background:rgba(61,220,151,0.1);}
   .exam-opt.wrong{border-color:var(--down);background:rgba(229,107,107,0.1);}
-  .exam-opt input{margin-inline-end:10px;}
   .exam-result{text-align:center;padding:30px;border-radius:14px;margin-top:10px;}
   .exam-result.pass{background:rgba(61,220,151,0.08);border:1px solid var(--up);}
   .exam-result.fail{background:rgba(229,107,107,0.08);border:1px solid var(--down);}
   .exam-result h3{font-size:22px;margin-bottom:8px;}
   .exam-result .score{font-family:'JetBrains Mono',monospace;font-size:32px;margin:12px 0;}
 
+  /* hub */
   .hub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
   .hub-card{
     background:var(--bg-panel);border:1px solid var(--line);border-radius:16px;
@@ -118,13 +159,18 @@
   .hub-card h3{font-size:16px;font-weight:600;}
   .hub-card .meta{font-size:12px;color:var(--text-dim);font-family:'JetBrains Mono',monospace;}
   .hub-card .progress-bar-outer{margin:6px 0 0;}
+  .badge-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;}
+  .badge-pill{font-size:10.5px;background:rgba(212,162,76,0.12);color:var(--gold);border:1px solid rgba(212,162,76,.35);padding:2px 8px;border-radius:999px;}
 
-  .en-content-note{
-    background:rgba(45,212,191,0.08);border:1px solid var(--teal-dim);color:var(--teal);
-    font-size:12.5px;padding:10px 14px;border-radius:10px;margin-bottom:18px;
+  .lang-fab{
+    position:fixed;bottom:22px;inset-inline-start:22px;z-index:200;
+    background:var(--bg-panel);border:1px solid var(--line);color:var(--text);
+    padding:10px 16px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:13px;
+    cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    display:flex;align-items:center;gap:6px;
   }
+  .lang-fab:hover{border-color:var(--teal);color:var(--teal);}
 
-  /* locked lesson state */
   .locked-card{text-align:center;padding:60px 30px;}
   .locked-card .icon{font-size:44px;margin-bottom:16px;}
   .locked-card h3{font-size:20px;margin-bottom:10px;font-family:'Cairo',sans-serif;}
@@ -132,8 +178,11 @@
 
   @media (max-width:900px){
     .course-shell{grid-template-columns:1fr;}
-    .course-sidebar{position:static;max-height:none;}
+    .course-sidebar{position:static;max-height:none;display:none;}
+    .course-sidebar.mobile-visible{display:block;}
+    .sidebar-toggle-mobile{display:block;}
     .hub-grid{grid-template-columns:1fr 1fr;}
+    .gallery{grid-template-columns:repeat(auto-fill,minmax(110px,1fr));}
   }
   @media (max-width:600px){ .hub-grid{grid-template-columns:1fr;} }
 </style>
@@ -175,17 +224,22 @@
 
   <button class="lang-fab" id="langToggle">🌐 EN</button>
 
-  <!-- Login-required modal -->
   <div id="loginModalOverlay" style="display:none;position:fixed;inset:0;z-index:300;background:rgba(2,6,9,0.75);backdrop-filter:blur(3px);align-items:center;justify-content:center;padding:20px;">
     <div style="max-width:380px;width:100%;background:var(--bg-panel);border:1px solid var(--line);border-radius:16px;padding:32px;text-align:center;">
       <div style="font-size:36px;margin-bottom:10px;">🔒</div>
-      <h3 style="font-size:18px;margin-bottom:10px;font-family:'Cairo',sans-serif;">يرجى تسجيل الدخول أولاً</h3>
-      <p style="color:var(--text-dim);font-size:14px;margin-bottom:22px;">للوصول إلى هذا المحتوى التعليمي، تحتاج لتسجيل الدخول أو إنشاء حساب أولاً.</p>
+      <h3 style="font-size:18px;margin-bottom:10px;font-family:'Cairo',sans-serif;" id="modalTitle">يرجى تسجيل الدخول أولاً</h3>
+      <p style="color:var(--text-dim);font-size:14px;margin-bottom:22px;" id="modalBody">للوصول إلى هذا المحتوى التعليمي، تحتاج لتسجيل الدخول أو إنشاء حساب أولاً.</p>
       <div style="display:flex;gap:10px;">
-        <button class="btn-ghost" style="flex:1;" onclick="closeLoginModal()">إلغاء</button>
-        <a href="auth.html" class="btn-primary" style="flex:1;text-align:center;">تسجيل الدخول</a>
+        <button class="btn-ghost" style="flex:1;" onclick="closeLoginModal()" id="modalCancel">إلغاء</button>
+        <a href="auth.html" class="btn-primary" style="flex:1;text-align:center;" id="modalConfirm">تسجيل الدخول</a>
       </div>
     </div>
+  </div>
+
+  <div class="lightbox-overlay" id="lightboxOverlay">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
   </div>
 
   <section style="padding-bottom:0;" id="pageHeadSection">
@@ -199,6 +253,9 @@
   </div>
 
   <div id="trackWrap" class="course-shell" style="display:none;">
+    <div style="grid-column:1/-1;">
+      <button class="sidebar-toggle-mobile" id="sidebarToggleMobile">☰ <span data-i18n="toggle_lessons">قائمة الدروس</span></button>
+    </div>
     <aside class="course-sidebar" id="sidebar"></aside>
     <main class="course-main" id="mainPane"></main>
   </div>
@@ -232,533 +289,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="config.js"></script>
 <script src="course-data.js"></script>
-<script>
-const I18N = {
-  ar: {
-    nav_home:"الرئيسية", nav_about:"من نحن", nav_edu:"التعليم ▾", nav_articles:"المقالات",
-    nav_contact:"تواصل معنا", nav_join:"انضم الآن", nav_login:"تسجيل الدخول",
-    hub_eyebrow:"مسار تعليمي متكامل", hub_title:"المسارات التعليمية",
-    hub_subtitle:"اختر مساراً وابدأ التعلم خطوة بخطوة.",
-    back_to_hub:"→ كل المسارات",
-    prev_lesson:"الدرس السابق", next_lesson:"إنهاء الدرس والانتقال للتالي", next_lesson_done:"تم ✓ — الدرس التالي",
-    exam_title:"📝 اختبار اجتياز المستوى", exam_submit:"إرسال الإجابات",
-    en_note:"محتوى هذا الدرس متاح بالعربية حالياً، والترجمة الإنجليزية قيد الإعداد.",
-    greeting:"مرحباً"
-  },
-  en: {
-    nav_home:"Home", nav_about:"About", nav_edu:"Learn ▾", nav_articles:"Articles",
-    nav_contact:"Contact", nav_join:"Join Now", nav_login:"Log In",
-    hub_eyebrow:"Full Learning Path", hub_title:"Learning Tracks",
-    hub_subtitle:"Pick a track and start learning step by step.",
-    back_to_hub:"← All Tracks",
-    prev_lesson:"Previous Lesson", next_lesson:"Finish & Continue", next_lesson_done:"Done ✓ — Next Lesson",
-    exam_title:"📝 Level Exam", exam_submit:"Submit Answers",
-    en_note:"This lesson's content is currently available in Arabic only — English translation is in progress.",
-    greeting:"Welcome"
-  }
-};
-let currentLang = localStorage.getItem('aw_lang') || 'ar';
-
-function applyLang(){
-  const t = I18N[currentLang];
-  document.getElementById('htmlRoot').lang = currentLang;
-  document.getElementById('htmlRoot').dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-  document.body.classList.toggle('lang-en', currentLang === 'en');
-  document.getElementById('langToggle').textContent = currentLang === 'ar' ? '🌐 EN' : '🌐 AR';
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if(t[key]){
-      if(key === 'nav_edu'){
-        el.childNodes[0].nodeValue = t[key].replace('▾','').trim() + ' ';
-      } else {
-        el.textContent = t[key];
-      }
-    }
-  });
-  if(!currentTrackId){
-    document.getElementById('pageEyebrow').textContent = t.hub_eyebrow;
-    document.getElementById('pageMainTitle').textContent = t.hub_title;
-    document.getElementById('pageSubtitle').textContent = t.hub_subtitle;
-  }
-  if(currentTrackId) render();
-}
-document.getElementById('langToggle').addEventListener('click', () => {
-  currentLang = currentLang === 'ar' ? 'en' : 'ar';
-  localStorage.setItem('aw_lang', currentLang);
-  applyLang();
-});
-
-document.getElementById('navHamburger').addEventListener('click', () => {
-  document.getElementById('navLinks').classList.toggle('mobile-open');
-});
-
-function closeLoginModal(){ document.getElementById('loginModalOverlay').style.display = 'none'; }
-function showLoginModal(){ document.getElementById('loginModalOverlay').style.display = 'flex'; }
-
-const FALLBACK_COINS = [
-  {symbol:'BTC', price:'—', chg:null},{symbol:'ETH', price:'—', chg:null},
-  {symbol:'USDT', price:'—', chg:null},{symbol:'BNB', price:'—', chg:null},
-  {symbol:'SOL', price:'—', chg:null},{symbol:'XRP', price:'—', chg:null},
-  {symbol:'USDC', price:'—', chg:null},{symbol:'ADA', price:'—', chg:null},
-  {symbol:'DOGE', price:'—', chg:null},{symbol:'TRX', price:'—', chg:null},
-];
-function fetchWithTimeout(url, ms=8000){
-  const controller = new AbortController();
-  const id = setTimeout(()=>controller.abort(), ms);
-  return fetch(url, {signal:controller.signal}).finally(()=>clearTimeout(id));
-}
-function renderTicker(coins){
-  const track = document.getElementById('tickerTrack');
-  const items = coins.map(c => {
-    if(c.chg === null){
-      return `<div class="tick-item"><span class="tick-sym">${c.symbol}</span><span class="tick-price">${c.price}</span></div>`;
-    }
-    const chgClass = c.chg >= 0 ? 'up' : 'down';
-    const arrow = c.chg >= 0 ? '▲' : '▼';
-    return `<div class="tick-item"><span class="tick-sym">${c.symbol}</span><span class="tick-price">$${c.price}</span><span class="tick-chg ${chgClass}">${arrow} ${Math.abs(c.chg).toFixed(2)}%</span></div>`;
-  }).join('');
-  track.innerHTML = items + items;
-}
-async function tryCoinGecko(){
-  const res = await fetchWithTimeout('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&price_change_percentage=24h');
-  if(!res.ok) throw new Error('coingecko http ' + res.status);
-  const data = await res.json();
-  if(!Array.isArray(data) || data.length === 0) throw new Error('coingecko empty response');
-  return data.map(c => ({
-    symbol: c.symbol.toUpperCase(),
-    price: c.current_price >= 1 ? c.current_price.toLocaleString('en-US',{maximumFractionDigits:2}) : c.current_price.toPrecision(4),
-    chg: c.price_change_percentage_24h ?? 0
-  }));
-}
-async function tryCoinCap(){
-  const res = await fetchWithTimeout('https://api.coincap.io/v2/assets?limit=10');
-  if(!res.ok) throw new Error('coincap http ' + res.status);
-  const json = await res.json();
-  const data = json.data;
-  if(!Array.isArray(data) || data.length === 0) throw new Error('coincap empty response');
-  return data.map(c => {
-    const price = parseFloat(c.priceUsd);
-    const chg = parseFloat(c.changePercent24Hr);
-    return {
-      symbol: c.symbol.toUpperCase(),
-      price: price >= 1 ? price.toLocaleString('en-US',{maximumFractionDigits:2}) : price.toPrecision(4),
-      chg: isNaN(chg) ? 0 : chg
-    };
-  });
-}
-let tickerRetries = 0;
-async function loadTicker(){
-  const track = document.getElementById('tickerTrack');
-  try{ const coins = await tryCoinGecko(); renderTicker(coins); tickerRetries = 0; return; }
-  catch(e1){
-    try{ const coins = await tryCoinCap(); renderTicker(coins); tickerRetries = 0; return; }
-    catch(e2){
-      tickerRetries++;
-      if(tickerRetries === 1){ track.innerHTML = '<div class="tick-item mono">جاري إعادة محاولة تحميل الأسعار...</div>'; }
-      else{ renderTicker(FALLBACK_COINS); }
-      setTimeout(loadTicker, 12000);
-    }
-  }
-}
-loadTicker();
-setInterval(loadTicker, 60000);
-
-function buildEduDropdown(){
-  const list = document.getElementById('eduDropdownList');
-  let html = '';
-  Object.keys(TRACKS).forEach(id => {
-    const t = TRACKS[id];
-    const tag = t.type === 'leveled' ? '3 مستويات' : (t.lessons.length + ' دروس');
-    html += `<a href="course.html?track=${id}">${t.icon || '📘'} ${t.title} <span class="tag">${tag}</span></a>`;
-  });
-  list.innerHTML = html;
-}
-buildEduDropdown();
-
-const eduDropdown = document.getElementById('eduDropdown');
-const eduTrigger = document.getElementById('eduTrigger');
-eduTrigger.addEventListener('click', (e) => { e.stopPropagation(); eduDropdown.classList.toggle('open'); });
-document.addEventListener('click', (e) => { if(!eduDropdown.contains(e.target)){ eduDropdown.classList.remove('open'); } });
-
-let userIsLoggedIn = false;
-let currentUsername = null;
-
-async function checkLoginStatus(){
-  if(IS_BACKEND_CONFIGURED){
-    const { data: { session } } = await supabaseClient.auth.getSession();
-    if(session && session.user.email_confirmed_at){
-      userIsLoggedIn = true;
-      currentUsername = session.user.user_metadata?.username || session.user.email.split('@')[0];
-    }
-  } else {
-    const demoSession = localStorage.getItem('aw_demo_session');
-    if(demoSession){
-      const s = JSON.parse(demoSession);
-      userIsLoggedIn = true;
-      currentUsername = s.username || s.email.split('@')[0];
-    }
-  }
-  updateAuthNavUI();
-}
-
-function updateAuthNavUI(){
-  document.getElementById('joinBtn').style.display = userIsLoggedIn ? 'none' : '';
-  document.getElementById('authNavBtn').style.display = userIsLoggedIn ? 'none' : '';
-  const badge = document.getElementById('userBadge');
-  badge.style.display = userIsLoggedIn ? 'flex' : 'none';
-  if(userIsLoggedIn) document.getElementById('userBadgeName').textContent = currentUsername;
-}
-
-const STORAGE_PREFIX = "aw_course_";
-function isLessonDone(trackId, lessonId){ return localStorage.getItem(STORAGE_PREFIX + trackId + "_" + lessonId) === "1"; }
-function markLessonDone(trackId, lessonId){ localStorage.setItem(STORAGE_PREFIX + trackId + "_" + lessonId, "1"); }
-function isExamPassed(trackId){ return localStorage.getItem(STORAGE_PREFIX + trackId + "_exam_passed") === "1"; }
-function markExamPassed(trackId){ localStorage.setItem(STORAGE_PREFIX + trackId + "_exam_passed", "1"); }
-function isLevelUnlocked(track, levelIndex){
-  if(levelIndex === 0) return true;
-  return isExamPassed(track.levels[levelIndex - 1].id);
-}
-
-function getComments(key){ return JSON.parse(localStorage.getItem('aw_comments_' + key) || '[]'); }
-function addComment(key, text){
-  const comments = getComments(key);
-  comments.push({text, ts: new Date().toLocaleString('ar-EG')});
-  localStorage.setItem('aw_comments_' + key, JSON.stringify(comments));
-}
-function commentsListHtml(key){
-  const comments = getComments(key);
-  return comments.length
-    ? comments.map(c => `<div class="comment-item"><div class="c-meta">${c.ts}</div><div class="c-body">${c.text.replace(/</g,'&lt;')}</div></div>`).join('')
-    : '<div class="empty-comments">لا توجد تعليقات بعد — كن أول من يبدأ النقاش.</div>';
-}
-function renderComments(key){
-  return `
-    <div class="comments-section">
-      <h4>💬 النقاش حول هذا الدرس</h4>
-      <p class="comments-note">تعليقات تجريبية محفوظة على جهازك فقط — تحتاج ربط قاعدة بيانات ليراها بقية الطلاب.</p>
-      <div class="comment-form">
-        <input type="text" id="commentInput" placeholder="اكتب تعليقك أو سؤالك...">
-        <button class="btn-primary" id="commentSubmit" style="padding:11px 20px;">إرسال</button>
-      </div>
-      <div id="commentsList">${commentsListHtml(key)}</div>
-    </div>
-  `;
-}
-function wireCommentForm(key){
-  document.getElementById('commentSubmit').onclick = () => {
-    const input = document.getElementById('commentInput');
-    if(input.value.trim() === '') return;
-    addComment(key, input.value.trim());
-    input.value = '';
-    document.getElementById('commentsList').innerHTML = commentsListHtml(key);
-  };
-}
-
-function renderMediaBlock(lesson){
-  if(lesson.video_url){
-    return `<div class="lesson-media">
-      <video controls preload="metadata" playsinline
-        onerror="this.closest('.lesson-media').innerHTML = document.getElementById('mediaFallbackVideo').innerHTML;">
-        <source src="${lesson.video_url}" type="video/mp4">
-      </video>
-      <div class="watermark">🐋 ArabicWhales حيتان العرب</div>
-    </div>`;
-  }
-  if(lesson.image_url){
-    return `<div class="lesson-media">
-      <img src="${lesson.image_url}" alt="${lesson.title}" loading="lazy"
-        onerror="this.closest('.lesson-media').innerHTML = document.getElementById('mediaFallbackImage').innerHTML;">
-      <div class="watermark">🐋 ArabicWhales حيتان العرب</div>
-    </div>`;
-  }
-  return '';
-}
-
-/* Fallback templates (used only if the real media URL fails to load, e.g. offline) */
-const mediaFallbackTemplates = `
-  <template id="mediaFallbackVideo"><div class="media-placeholder"><div class="icon">🎬</div><div>تعذّر تحميل الفيديو — تحقق من الاتصال بالإنترنت</div></div><div class="watermark">🐋 ArabicWhales حيتان العرب</div></template>
-  <template id="mediaFallbackImage"><div class="media-placeholder"><div class="icon">🖼️</div><div>تعذّر تحميل الصورة — تحقق من الاتصال بالإنترنت</div></div><div class="watermark">🐋 ArabicWhales حيتان العرب</div></template>
-`;
-document.body.insertAdjacentHTML('beforeend', mediaFallbackTemplates);
-
-function trackProgressPct(id, track){
-  if(track.type === 'leveled'){
-    const total = track.levels.reduce((s,l) => s + l.lessons.length + 1, 0);
-    let done = 0;
-    track.levels.forEach(l => {
-      done += l.lessons.filter(les => isLessonDone(l.id, les.id)).length;
-      if(isExamPassed(l.id)) done++;
-    });
-    return Math.round((done/total)*100);
-  } else {
-    const done = track.lessons.filter(l => isLessonDone(id, l.id)).length;
-    return Math.round((done/track.lessons.length)*100);
-  }
-}
-function renderHub(){
-  const grid = document.getElementById('hubGrid');
-  let html = '';
-  Object.keys(TRACKS).forEach(id => {
-    const t = TRACKS[id];
-    const count = t.type === 'leveled' ? t.levels.reduce((s,l)=>s+l.lessons.length,0) + ' درس · 3 مستويات' : t.lessons.length + ' دروس';
-    const pct = trackProgressPct(id, t);
-    html += `<a class="hub-card" href="course.html?track=${id}">
-      <div class="icon">${t.icon || '📘'}</div>
-      <h3>${t.title}</h3>
-      <div class="meta">${count}</div>
-      <div class="progress-bar-outer"><div class="progress-bar-inner" style="width:${pct}%"></div></div>
-    </a>`;
-  });
-  grid.innerHTML = html;
-}
-
-const urlParams = new URLSearchParams(window.location.search);
-const currentTrackId = urlParams.get('track');
-let currentLevelIndex = 0;
-let currentLessonIndex = 0;
-let currentView = "lesson";
-
-function buildSidebar(){
-  const sidebar = document.getElementById('sidebar');
-  const track = TRACKS[currentTrackId];
-  let html = `<div class="back-to-hub" onclick="window.location.href='course.html'">${I18N[currentLang].back_to_hub}</div>`;
-  html += `<div class="course-title">${track.icon || '📘'} ${track.title}</div>`;
-
-  if(track.type === 'leveled'){
-    track.levels.forEach((level, li) => {
-      const unlocked = isLevelUnlocked(track, li);
-      const openClass = li === currentLevelIndex ? "open" : "";
-      const lockedClass = unlocked ? "" : "locked";
-      html += `<div class="level-block ${openClass} ${lockedClass}" data-level="${li}">
-        <div class="level-head" onclick="toggleLevel(${li})">
-          <span>${unlocked ? '' : '🔒 '}${level.name}</span>
-          <span class="badge">${level.badge}</span>
-        </div>
-        <div class="level-lessons">`;
-      level.lessons.forEach((lesson, lidx) => {
-        const done = isLessonDone(level.id, lesson.id);
-        const active = (li === currentLevelIndex && lidx === currentLessonIndex && currentView === "lesson") ? "active" : "";
-        html += `<div class="lesson-link ${done ? 'done' : ''} ${active}" onclick="${unlocked ? `goToLesson(${li}, ${lidx})` : ''}">
-          <span class="check">${done ? '✓' : ''}</span> ${lesson.title}
-        </div>`;
-      });
-      const examDone = isExamPassed(level.id);
-      const examActive = (li === currentLevelIndex && currentView === "exam") ? "active" : "";
-      html += `<div class="lesson-link exam-link ${examDone ? 'done' : ''} ${examActive}" onclick="${unlocked ? `goToExam(${li})` : ''}">
-          <span class="check">${examDone ? '✓' : ''}</span> 📝 اختبار اجتياز المستوى
-        </div>`;
-      html += `</div></div>`;
-    });
-  } else {
-    html += `<div class="level-lessons open" style="display:block;">`;
-    track.lessons.forEach((lesson, lidx) => {
-      const done = isLessonDone(currentTrackId, lesson.id);
-      const active = (lidx === currentLessonIndex) ? "active" : "";
-      html += `<div class="lesson-link ${done ? 'done' : ''} ${active}" onclick="goToFlatLesson(${lidx})">
-        <span class="check">${done ? '✓' : ''}</span> ${lesson.title}
-      </div>`;
-    });
-    html += `</div>`;
-  }
-  sidebar.innerHTML = html;
-}
-
-function toggleLevel(li){
-  document.querySelectorAll('.level-block').forEach((b, idx) => {
-    if(idx === li) b.classList.toggle('open'); else b.classList.remove('open');
-  });
-}
-function goToLesson(li, lidx){
-  if(!userIsLoggedIn){ showLoginModal(); return; }
-  currentLevelIndex = li; currentLessonIndex = lidx; currentView = "lesson"; render();
-}
-function goToExam(li){
-  if(!userIsLoggedIn){ showLoginModal(); return; }
-  currentLevelIndex = li; currentView = "exam"; render();
-}
-function goToFlatLesson(lidx){
-  if(!userIsLoggedIn){ showLoginModal(); return; }
-  currentLessonIndex = lidx; render();
-}
-
-function lessonBodyOrNote(lesson){
-  if(currentLang === 'en'){
-    return `<div class="en-content-note">ℹ️ ${I18N.en.en_note}</div><p class="lesson-content" dir="rtl" style="text-align:right;font-family:'IBM Plex Sans Arabic',sans-serif;">${lesson.content}</p>`;
-  }
-  return `<p class="lesson-content">${lesson.content}</p>`;
-}
-
-function renderLeveledLesson(){
-  const track = TRACKS[currentTrackId];
-  const level = track.levels[currentLevelIndex];
-  const lesson = level.lessons[currentLessonIndex];
-  const totalItems = level.lessons.length + 1;
-  const doneCount = level.lessons.filter(l => isLessonDone(level.id, l.id)).length + (isExamPassed(level.id) ? 1 : 0);
-  const pct = Math.round((doneCount / totalItems) * 100);
-  const t = I18N[currentLang];
-
-  const main = document.getElementById('mainPane');
-  main.innerHTML = `
-    <div class="progress-bar-outer"><div class="progress-bar-inner" style="width:${pct}%"></div></div>
-    <div class="lesson-eyebrow">${level.name} · ${currentLessonIndex + 1}/${level.lessons.length}</div>
-    <h2 class="lesson-title">${lesson.title}</h2>
-    ${renderMediaBlock(lesson)}
-    ${lessonBodyOrNote(lesson)}
-    <div class="lesson-nav">
-      <button class="btn-ghost" id="prevBtn" ${currentLessonIndex === 0 ? 'disabled style="opacity:.4;cursor:not-allowed;"' : ''}>${t.prev_lesson}</button>
-      <button class="btn-primary" id="nextBtn">${isLessonDone(level.id, lesson.id) ? t.next_lesson_done : t.next_lesson}</button>
-    </div>
-    ${renderComments(level.id + '_' + lesson.id)}
-  `;
-  markLessonDone(level.id, lesson.id);
-  buildSidebar();
-  wireCommentForm(level.id + '_' + lesson.id);
-
-  document.getElementById('prevBtn').onclick = () => { if(currentLessonIndex > 0){ currentLessonIndex--; render(); } };
-  document.getElementById('nextBtn').onclick = () => {
-    if(currentLessonIndex < level.lessons.length - 1){ currentLessonIndex++; render(); }
-    else { currentView = "exam"; render(); }
-  };
-}
-
-function renderFlatLesson(){
-  const track = TRACKS[currentTrackId];
-  const lesson = track.lessons[currentLessonIndex];
-  const doneCount = track.lessons.filter(l => isLessonDone(currentTrackId, l.id)).length;
-  const pct = Math.round((doneCount / track.lessons.length) * 100);
-  const t = I18N[currentLang];
-
-  const main = document.getElementById('mainPane');
-  main.innerHTML = `
-    <div class="progress-bar-outer"><div class="progress-bar-inner" style="width:${pct}%"></div></div>
-    <div class="lesson-eyebrow">${track.title} · ${currentLessonIndex + 1}/${track.lessons.length}</div>
-    <h2 class="lesson-title">${lesson.title}</h2>
-    ${renderMediaBlock(lesson)}
-    ${lessonBodyOrNote(lesson)}
-    <div class="lesson-nav">
-      <button class="btn-ghost" id="prevBtn" ${currentLessonIndex === 0 ? 'disabled style="opacity:.4;cursor:not-allowed;"' : ''}>${t.prev_lesson}</button>
-      <button class="btn-primary" id="nextBtn" ${currentLessonIndex === track.lessons.length - 1 ? 'style="opacity:.6;"' : ''}>${isLessonDone(currentTrackId, lesson.id) ? t.next_lesson_done : t.next_lesson}</button>
-    </div>
-    ${renderComments(currentTrackId + '_' + lesson.id)}
-  `;
-  markLessonDone(currentTrackId, lesson.id);
-  buildSidebar();
-  wireCommentForm(currentTrackId + '_' + lesson.id);
-
-  document.getElementById('prevBtn').onclick = () => { if(currentLessonIndex > 0){ currentLessonIndex--; render(); } };
-  document.getElementById('nextBtn').onclick = () => {
-    if(currentLessonIndex < track.lessons.length - 1){ currentLessonIndex++; render(); }
-  };
-}
-
-function renderExam(){
-  const track = TRACKS[currentTrackId];
-  const level = track.levels[currentLevelIndex];
-  const t = I18N[currentLang];
-  const main = document.getElementById('mainPane');
-  let html = `
-    <div class="lesson-eyebrow">${level.name}</div>
-    <h2 class="lesson-title">${t.exam_title}</h2>
-    <p class="lesson-content" style="margin-bottom:20px;">أجب عن الأسئلة التالية، وتحتاج ${level.exam.pass}% على الأقل للنجاح وفتح المستوى التالي.</p>
-    <form id="examForm">
-  `;
-  level.exam.questions.forEach((q, qi) => {
-    html += `<div class="exam-q"><h4>${qi+1}. ${q.q}</h4>`;
-    q.options.forEach((opt, oi) => {
-      html += `<label class="exam-opt" data-q="${qi}" data-o="${oi}"><input type="radio" name="q${qi}" value="${oi}"> ${opt}</label>`;
-    });
-    html += `</div>`;
-  });
-  html += `</form><button class="btn-primary" id="submitExamBtn">${t.exam_submit}</button><div id="examResult"></div>`;
-  main.innerHTML = html;
-  buildSidebar();
-
-  main.querySelectorAll('.exam-opt').forEach(opt => {
-    opt.addEventListener('click', () => {
-      const qi = opt.dataset.q;
-      main.querySelectorAll(`.exam-opt[data-q="${qi}"]`).forEach(o => o.classList.remove('selected'));
-      opt.classList.add('selected');
-    });
-  });
-
-  document.getElementById('submitExamBtn').onclick = (e) => {
-    e.preventDefault();
-    let correct = 0;
-    level.exam.questions.forEach((q, qi) => {
-      const selected = main.querySelector(`.exam-opt[data-q="${qi}"].selected`);
-      const selectedIdx = selected ? parseInt(selected.dataset.o) : -1;
-      main.querySelectorAll(`.exam-opt[data-q="${qi}"]`).forEach(o => {
-        const oi = parseInt(o.dataset.o);
-        if(oi === q.correct) o.classList.add('correct');
-        else if(oi === selectedIdx) o.classList.add('wrong');
-      });
-      if(selectedIdx === q.correct) correct++;
-    });
-    const scorePct = Math.round((correct / level.exam.questions.length) * 100);
-    const passed = scorePct >= level.exam.pass;
-    if(passed) markExamPassed(level.id);
-    const resultDiv = document.getElementById('examResult');
-    const nextLevel = track.levels[currentLevelIndex + 1];
-    resultDiv.innerHTML = `
-      <div class="exam-result ${passed ? 'pass' : 'fail'}">
-        <h3>${passed ? '🎉 مبروك، لقد اجتزت المستوى!' : '😕 لم تحقق النسبة المطلوبة بعد'}</h3>
-        <div class="score">${correct} / ${level.exam.questions.length} (${scorePct}%)</div>
-        <p style="color:var(--text-dim);">${passed
-          ? (nextLevel ? `تم فتح ${nextLevel.name} الآن.` : 'لقد أكملت المسار بالكامل!')
-          : `أعد مراجعة دروس ${level.name} وحاول مرة أخرى.`}</p>
-        ${passed && nextLevel ? `<button class="btn-primary" style="margin-top:14px;" onclick="goToLesson(${currentLevelIndex+1}, 0)">ابدأ ${nextLevel.name}</button>` : ''}
-        ${!passed ? `<button class="btn-ghost" style="margin-top:14px;" onclick="goToLesson(${currentLevelIndex}, 0)">مراجعة الدروس</button>` : ''}
-      </div>
-    `;
-    document.getElementById('submitExamBtn').style.display = 'none';
-    buildSidebar();
-  };
-}
-
-function render(){
-  const track = TRACKS[currentTrackId];
-  if(!userIsLoggedIn){ renderLockedState(track); return; }
-  if(track.type === 'leveled'){
-    if(currentView === "exam") renderExam(); else renderLeveledLesson();
-  } else {
-    renderFlatLesson();
-  }
-}
-
-function renderLockedState(track){
-  const main = document.getElementById('mainPane');
-  main.innerHTML = `
-    <div class="locked-card">
-      <div class="icon">🔒</div>
-      <h3>سجّل الدخول لبدء التعلّم</h3>
-      <p>يمكنك تصفح أسماء الدروس في هذا المسار بحرية، لكن قراءة محتوى أي درس أو دخول الاختبار يتطلب تسجيل دخول أولاً.</p>
-      <div style="display:flex;gap:10px;justify-content:center;">
-        <a href="auth.html" class="btn-primary">تسجيل الدخول / إنشاء حساب</a>
-      </div>
-    </div>
-  `;
-  buildSidebar();
-}
-
-Promise.resolve(checkLoginStatus()).then(() => {
-  applyLang();
-  if(currentTrackId && TRACKS[currentTrackId]){
-    document.getElementById('hubWrap').style.display = 'none';
-    document.getElementById('trackWrap').style.display = 'grid';
-    const track = TRACKS[currentTrackId];
-    document.getElementById('pageEyebrow').textContent = track.type === 'leveled' ? 'مسار تعليمي متكامل' : 'مسار تعليمي';
-    document.getElementById('pageMainTitle').textContent = track.icon + ' ' + track.title;
-    document.getElementById('pageSubtitle').textContent = track.type === 'leveled'
-      ? '3 مستويات، كل مستوى له دروسه واختبار اجتياز خاص به.'
-      : `${track.lessons.length} دروس — أكملها بالترتيب حسب رغبتك.`;
-    buildSidebar();
-    render();
-  } else {
-    document.getElementById('hubWrap').style.display = 'block';
-    document.getElementById('trackWrap').style.display = 'none';
-    renderHub();
-  }
-});
-</script>
+<script src="course.js"></script>
 </body>
 </html>
