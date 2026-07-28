@@ -1,7 +1,37 @@
 const TRACKS = {
   "digital-currencies": {
     type: "leveled",
-    icon: "🪙",
+    icon: "<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- خلفية متدرجة للعملة -->
+  <defs>
+    <linearGradient id="coinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD700" />
+      <stop offset="100%" stop-color="#FFA500" />
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F2FE" />
+      <stop offset="100%" stop-color="#4FACFE" />
+    </linearGradient>
+  </defs>
+
+  <!-- الدائرة الخارجية (إطار العملة) -->
+  <circle cx="12" cy="12" r="9" stroke="url(#coinGrad)" stroke-width="2" fill="none" />
+  
+  <!-- الدائرة الداخلية -->
+  <circle cx="12" cy="12" r="7" fill="url(#coinGrad)" fill-opacity="0.15" />
+
+  <!-- رمز الكريبتو التكنولوجي (حرف ₿ أو رمز تقني شبكي) -->
+  <path d="M11 7H14C15.1046 7 16 7.89543 16 9C16 9.7958 15.5337 10.4828 14.8638 10.8038C15.5562 11.1098 16.0357 11.8021 16.0357 12.6071C16.0357 13.7117 15.1403 14.6071 14.0357 14.6071H11V7Z" stroke="url(#coinGrad)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M11 11H14.5" stroke="url(#coinGrad)" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M11 7V15" stroke="url(#coinGrad)" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M12.5 5.5V7" stroke="url(#coinGrad)" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M12.5 14.6V16.1" stroke="url(#coinGrad)" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- لمسات بريق وتكنولوجيا حول العملة -->
+  <circle cx="19" cy="5" r="1" fill="url(#glowGrad)" />
+  <circle cx="5" cy="19" r="1.5" fill="url(#glowGrad)" />
+</svg>
+",
     title: "مسار العملات الرقمية",
     levels: [
       {
@@ -112,7 +142,34 @@ const TRACKS = {
   "wallets": {
     type: "flat",
     title: "المحافظ الرقمية",
-    icon: "👛",
+    icon: "<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="walletGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#3B82F6" />
+    </linearGradient>
+    <linearGradient id="walletGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F2FE" />
+      <stop offset="100%" stop-color="#4FACFE" />
+    </linearGradient>
+  </defs>
+
+  <!-- جسم المحفظة الرقمية -->
+  <rect x="3" y="6" width="18" height="13" rx="3" stroke="url(#walletGrad)" stroke-width="1.8" fill="url(#walletGrad)" fill-opacity="0.15"/>
+  
+  <!-- إبزيم القفل الذكي / البصمة -->
+  <path d="M16 11H21V14H16C15.1716 14 14.5 13.3284 14.5 12.5C14.5 11.6716 15.1716 11 16 11Z" stroke="url(#walletGrad)" stroke-width="1.5" fill="url(#walletGrad)"/>
+  <circle cx="17.5" cy="12.5" r="0.8" fill="#FFFFFF"/>
+
+  <!-- خطوط الاتصال الشبكي داخل المحفظة -->
+  <path d="M7 10H11" stroke="url(#walletGlow)" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M7 14H9.5" stroke="url(#walletGlow)" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- بريق الشفرة التكنولوجية -->
+  <circle cx="19" cy="4" r="1.2" fill="url(#walletGlow)" />
+  <circle cx="4" cy="20" r="1" fill="url(#walletGlow)" />
+</svg>
+",
     lessons: [
       {id:"w1", title:"ما هي المحفظة الرقمية؟", content:"المحفظة الرقمية ليست مكاناً فعلياً لتخزين العملات، بل أداة تحفظ مفاتيحك الخاصة والعامة التي تثبت ملكيتك للأصول المسجّلة على البلوكتشين وتتيح لك توقيع المعاملات وإرسالها بأمان."},
       {id:"w2", title:"لماذا نحتاج محفظة؟", content:"بدون محفظة، لا يمكنك استلام أو إرسال أو حتى إثبات ملكية أي عملة رقمية، فهي بمثابة 'هويتك المالية' في العالم اللامركزي التي تحل محل الحساب البنكي التقليدي دون وسيط يديره."},
@@ -128,7 +185,16 @@ const TRACKS = {
   "trading": {
     type: "flat",
     title: "التداول",
-    icon: "📊",
+    icon: "<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="chartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" /><stop offset="100%" stop-color="#3B82F6" />
+    </linearGradient>
+  </defs>
+  <path d="M18 20V10M12 20V4M6 20V14" stroke="url(#chartGrad)" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M3 20H21" stroke="url(#chartGrad)" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+",
     lessons: [
       {id:"tr1", title:"ما هو التداول؟", content:"التداول هو شراء وبيع الأصول الرقمية بهدف الربح من فروقات الأسعار على المدى القصير أو المتوسط، ويختلف عن الاستثمار طويل الأمد الذي يعتمد على الاحتفاظ لسنوات متجاهلاً التقلبات اليومية."},
       {id:"tr2", title:"لماذا يتداول الناس؟", content:"يتداول الناس لتحقيق أرباح من تقلبات السوق السريعة، أو لإعادة توازن محفظتهم الاستثمارية، أو للاستفادة من فرص قصيرة الأمد ناتجة عن أخبار أو أحداث تؤثر على سعر عملة معينة."},
@@ -144,7 +210,17 @@ const TRACKS = {
   "blockchain": {
     type: "flat",
     title: "ما هو البلوكشين؟",
-    icon: "🔗",
+    icon: "<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="chainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4" /><stop offset="100%" stop-color="#3B82F6" />
+    </linearGradient>
+  </defs>
+  <path d="M10 13A5 5 0 0 0 7.5 14.5L4.5 17.5A4.24 4.24 0 0 0 10.5 23.5L12.5 21.5" stroke="url(#chainGrad)" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M14 11A5 5 0 0 0 16.5 9.5L19.5 6.5A4.24 4.24 0 0 0 13.5 0.5L11.5 2.5" stroke="url(#chainGrad)" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M8 16L16 8" stroke="url(#chainGrad)" stroke-width="2" stroke-linecap="round"/>
+</svg>
+",
     lessons: [
       {id:"bc1", title:"لماذا تم إنشاء البلوكشين؟", content:"صُمم البلوكتشين لحل مشكلة 'الإنفاق المزدوج' في النقود الرقمية دون الحاجة لجهة مركزية موثوقة تتحقق من كل معاملة، عبر سجل موزّع يتفق عليه آلاف المشاركين بشكل مستقل."},
       {id:"bc2", title:"كيف يعمل البلوكشين؟", image_url:"https://picsum.photos/seed/aw107/800/450", content:"تُجمَّع المعاملات في 'كتل'، وكل كتلة جديدة ترتبط رياضياً بالكتلة التي سبقتها عبر تشفير، بحيث يستحيل تعديل كتلة قديمة دون أن ينكشف الأمر فوراً لبقية الشبكة، لأن كل نسخة موزّعة تحتفظ بالسجل كاملاً."},
@@ -159,7 +235,16 @@ const TRACKS = {
   "ethereum": {
     type: "flat",
     title: "الإيثريوم والعقود الذكية",
-    icon: "🧬",
+    icon: "<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ethGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366F1" /><stop offset="100%" stop-color="#A855F7" />
+    </linearGradient>
+  </defs>
+  <path d="M12 2L4.5 12.5L12 16L19.5 12.5L12 2Z" stroke="url(#ethGrad)" stroke-width="1.8" fill="url(#ethGrad)" fill-opacity="0.1" stroke-linejoin="round"/>
+  <path d="M4.5 12.5L12 22L19.5 12.5M12 2V16" stroke="url(#ethGrad)" stroke-width="1.5" stroke-linejoin="round"/>
+</svg>
+",
     lessons: [
       {id:"eth1", title:"ما هو الإيثريوم", content:"إيثريوم شبكة بلوكتشين تتجاوز فكرة كونها عملة دفع فقط، فهي 'حاسوب عالمي' لامركزي يتيح لأي مطور بناء وتشغيل تطبيقات كاملة فوقها دون خادم مركزي يملكه أحد."},
       {id:"eth2", title:"لماذا تم إنشاء الإيثريوم؟", content:"أُنشئ إيثريوم لأن بيتكوين صُمم أساساً كنظام دفع محدود الإمكانيات البرمجية، بينما أراد مؤسسو إيثريوم منصة مرنة تتيح بناء أي نوع من التطبيقات اللامركزية بمنطق برمجي حر."},
@@ -177,7 +262,16 @@ const TRACKS = {
   "web3": {
     type: "flat",
     title: "Web3 والمستقبل",
-    icon: "🌐",
+    icon: "<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="web3GlobeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EC4899" /><stop offset="100%" stop-color="#8B5CF6" />
+    </linearGradient>
+  </defs>
+  <circle cx="12" cy="12" r="9" stroke="url(#web3GlobeGrad)" stroke-width="1.8"/>
+  <path d="M3.6 9H20.4M3.6 15H20.4M12 3C14.5 6 16 9 16 12C16 15 14.5 18 12 21C9.5 18 8 15 8 12C8 9 9.5 6 12 3Z" stroke="url(#web3GlobeGrad)" stroke-width="1.5"/>
+</svg>
+",
     lessons: [
       {id:"w3_1", title:"ما هو Web3؟", content:"Web3 مصطلح يصف الجيل القادم من الإنترنت، حيث يمتلك المستخدمون بياناتهم وأصولهم الرقمية فعلياً عبر البلوكتشين، بدل أن تحتفظ بها شركات مركزية كبرى كما هو الحال في الإنترنت الحالي (Web2)."},
       {id:"w3_2", title:"الهوية الرقمية والملكية الرقمية", content:"في Web3، محفظتك الرقمية تصبح هويتك الموحدة عبر تطبيقات متعددة، وملكيتك لأصل رقمي (عبر NFT مثلاً) مسجّلة على البلوكتشين مباشرة، لا في قاعدة بيانات شركة يمكنها حذفها أو تجميدها."},
@@ -190,7 +284,15 @@ const TRACKS = {
   "defi": {
     type: "flat",
     title: "التمويل اللامركزي DeFi",
-    icon: "🏛️",
+    icon: "<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="defiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" /><stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+  </defs>
+  <path d="M4 21H20M4 10H20M12 3L4 7H20L12 3ZM6 10V17M10 10V17M14 10V17M18 10V17" stroke="url(#defiGrad)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+",
     lessons: [
       {id:"defi1", title:"ما هو DeFi؟", content:"DeFi (التمويل اللامركزي) هو مجموعة تطبيقات مالية (إقراض، اقتراض، تبادل) تعمل عبر عقود ذكية مباشرة بين المستخدمين، بدون بنك أو شركة وسيطة تتحكم بأموالك أو تقرر من يمكنه الوصول للخدمة."},
       {id:"defi2", title:"الإقراض والاقتراض والربح من السيولة", content:"يمكنك في DeFi إيداع عملاتك في بروتوكول إقراض لتكسب فائدة من مقترضين آخرين، أو توفير سيولة لمنصة تبادل لامركزية وكسب جزء من رسوم التداول، دون وسيط بشري يدير العملية."},
@@ -203,7 +305,16 @@ const TRACKS = {
   "stablecoins": {
     type: "flat",
     title: "العملات المستقرة Stablecoins",
-    icon: "💵",
+    icon: "<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="stableGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399" /><stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+  </defs>
+  <circle cx="12" cy="12" r="9" stroke="url(#stableGrad)" stroke-width="1.8" fill="url(#stableGrad)" fill-opacity="0.1"/>
+  <path d="M12 6V18M15 9.5C15 8.1 13.7 7 12 7C10.3 7 9 8.1 9 9.5C9 11 10.3 11.5 12 12C13.7 12.5 15 13 15 14.5C15 15.9 13.7 17 12 17C10.3 17 9 15.9 9 14.5" stroke="url(#stableGrad)" stroke-width="1.8" stroke-linecap="round"/>
+</svg>
+",
     lessons: [
       {id:"sc1", title:"ما هي العملات المستقرة؟", content:"العملة المستقرة (Stablecoin) هي عملة رقمية مصممة لتحافظ على قيمة ثابتة تقريباً، غالباً مربوطة بعملة تقليدية مثل الدولار الأمريكي بنسبة واحد لواحد، وذلك عبر احتياطي نقدي أو آلية خوارزمية تحافظ على هذا الربط."},
       {id:"sc2", title:"الفرق بين العملات المستقرة والعملات الرقمية الأخرى", content:"بعكس بيتكوين أو إيثريوم اللذين يتقلب سعرهما بشدة، تحافظ العملة المستقرة على سعر شبه ثابت، ما يجعلها أداة عملية للتحويلات والادخار داخل عالم الكريبتو دون التعرض لمخاطر التقلب."},
@@ -215,7 +326,16 @@ const TRACKS = {
   "security": {
     type: "flat",
     title: "الأمان وحماية الأصول",
-    icon: "🛡️",
+    icon: "<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" /><stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+  </defs>
+  <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="url(#shieldGrad)" stroke-width="1.8" fill="url(#shieldGrad)" fill-opacity="0.15" stroke-linejoin="round"/>
+  <path d="M9 12L11 14L15 10" stroke="url(#shieldGrad)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+",
     lessons: [
       {id:"sec1", title:"أنواع الاحتيال في الكريبتو", content:"من أشهر أنواع الاحتيال: مواقع تصيّد تنتحل شكل منصات حقيقية، مشاريع 'اسحب البساط' (Rug Pull) التي يختفي مؤسسوها بعد جمع الأموال، ورسائل تعد بمضاعفة أموالك مقابل إرسالها أولاً لعنوان معين."},
       {id:"sec2", title:"حماية المحافظ والحسابات", content:"فعّل التحقق بخطوتين على كل حساب مرتبط بالكريبتو، احفظ عبارة الاسترداد بشكل مادي غير رقمي بعيداً عن الإنترنت، ولا تُدخلها أبداً في أي موقع أو نافذة منبثقة مهما بدت رسمية."},
@@ -227,7 +347,17 @@ const TRACKS = {
   "networks": {
     type: "flat",
     title: "الشبكات",
-    icon: "📡",
+    icon: "<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="netGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F2FE" /><stop offset="100%" stop-color="#4FACFE" />
+    </linearGradient>
+  </defs>
+  <path d="M12 19V11M12 11L7.5 4.5M12 11L16.5 4.5" stroke="url(#netGrad)" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M4.93 10.93C3.12 12.74 3.12 15.68 4.93 17.49M19.07 10.93C20.88 12.74 20.88 15.68 19.07 17.49" stroke="url(#netGrad)" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="12" cy="19" r="1.5" fill="url(#netGrad)"/>
+</svg>
+",
     lessons: [
       {id:"net1", title:"ما هي الشبكات", content:"شبكة البلوكتشين هي البنية التحتية التي تعمل عليها عملة أو مجموعة تطبيقات، وتتفاوت الشبكات في سرعتها، رسومها، ومستوى لامركزيتها؛ اختيار الشبكة المناسبة يؤثر مباشرة على تجربتك وتكلفتك."},
       {id:"net2", title:"ما الفرق بينها", content:"تختلف الشبكات في آلية الإجماع المستخدمة (إثبات عمل أو إثبات حصة)، عدد المعاملات بالثانية، ودرجة اللامركزية؛ شبكة أسرع غالباً ما تضحي بجزء من اللامركزية، وهذا يُعرف بـ'ثلاثية البلوكتشين المستحيلة'."},
@@ -240,7 +370,16 @@ const TRACKS = {
   "dex-cex": {
     type: "flat",
     title: "منصات DEX و CEX",
-    icon: "🏦",
+    icon: "<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bankGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" /><stop offset="100%" stop-color="#8B5CF6" />
+    </linearGradient>
+  </defs>
+  <path d="M3 21H21M3 10L12 3L21 10M5 10V18M9 10V18M15 10V18M19 10V18" stroke="url(#bankGrad)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="12" cy="14" r="1.5" fill="url(#bankGrad)"/>
+</svg>
+",
     lessons: [
       {id:"dc1", title:"ما هي منصات DEX", content:"منصات التبادل اللامركزي (DEX) تتيح لك التداول مباشرة من محفظتك الشخصية عبر عقود ذكية، دون تسليم أموالك لأي شركة وسيطة، وأشهرها Uniswap وPancakeSwap."},
       {id:"dc2", title:"كيف تعمل منصات DEX", content:"تعتمد أغلب منصات DEX على 'صانع سوق آلي' (AMM): مستخدمون آخرون يودعون أزواج عملات في مجمّع سيولة، وحين تتداول أنت، يحدد العقد الذكي السعر تلقائياً بناءً على نسبة العملتين في ذلك المجمّع."},
