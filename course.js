@@ -730,18 +730,13 @@ function renderExam(){
     const resultDiv = document.getElementById('examResult');
     const nextLevel = track.levels[currentLevelIndex + 1];
     const nextLevelName = nextLevel ? (currentLang==='en' && nextLevel.name_en ? nextLevel.name_en : nextLevel.name) : null;
+    
+    const passIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="passGradEx" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10B981" /><stop offset="100%" stop-color="#34D399" /></linearGradient></defs><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="url(#passGradEx)" stroke-width="1.8" fill="url(#passGradEx)" fill-opacity="0.2" stroke-linejoin="round"/></svg>`;
+    const titleText = passed ? `${passIcon} ${currentLang==='en'?'Congratulations, you passed!':'مبروك، لقد اجتزت المستوى!'}` : `😕 ${currentLang==='en'?'Not quite there yet':'لم تحقق النسبة المطلوبة بعد'}`;
+    
     resultDiv.innerHTML = `
       <div class="exam-result ${passed ? 'pass' : 'fail'}">
-        <h3>${passed ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="passGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#10B981" />
-      <stop offset="100%" stop-color="#34D399" />
-    </linearGradient>
-  </defs>
-  <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="url(#passGrad)" stroke-width="1.8" fill="url(#passGrad)" fill-opacity="0.2" stroke-linejoin="round"/>
-</svg>
- ` + (currentLang==='en'?'Congratulations, you passed!':'مبروك، لقد اجتزت المستوى!') : '😕 ' + (currentLang==='en'?'Not quite there yet':'لم تحقق النسبة المطلوبة بعد')}</h3>
+        <h3>${titleText}</h3>
         <div class="score">${correct} / ${level.exam.questions.length} (${scorePct}%)</div>
         <p style="color:var(--text-dim);">${passed
           ? (nextLevel ? (currentLang==='en'?`${nextLevelName} is now unlocked.`:`تم فتح ${nextLevelName} الآن.`) : (currentLang==='en'?'You completed the whole track!':'لقد أكملت المسار بالكامل!'))
