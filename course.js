@@ -13,11 +13,53 @@ const I18N = {
     hub_subtitle:"اختر مساراً وابدأ التعلم خطوة بخطوة.",
     back_to_hub:"→ كل المسارات", toggle_lessons:"قائمة الدروس",
     prev_lesson:"الدرس السابق", next_lesson:"إنهاء الدرس والانتقال للتالي", next_lesson_done:"تم ✓ — الدرس التالي",
-    exam_title:"📝 اختبار اجتياز المستوى", exam_submit:"إرسال الإجابات",
-    quiz_title:"📝 اختبر فهمك", quiz_submit:"تحقق من الإجابة",
-    quiz_pass:"إجابة صحيحة! أحسنت 🎉", quiz_fail:"إجابة غير صحيحة، حاول مرة أخرى.",
+    exam_title:"<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="examGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#00F2FE" />
+    </linearGradient>
+  </defs>
+  <path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" stroke="url(#examGrad)" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M14 2V8H20" stroke="url(#examGrad)" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M16 13H8M16 17H8M10 9H8" stroke="url(#examGrad)" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+ اختبار اجتياز المستوى", exam_submit:"إرسال الإجابات",
+    quiz_title:"<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="examGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#00F2FE" />
+    </linearGradient>
+  </defs>
+  <path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" stroke="url(#examGrad)" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M14 2V8H20" stroke="url(#examGrad)" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M16 13H8M16 17H8M10 9H8" stroke="url(#examGrad)" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+ اختبر فهمك", quiz_submit:"تحقق من الإجابة",
+    quiz_pass:"إجابة صحيحة! أحسنت <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="passGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#34D399" />
+    </linearGradient>
+  </defs>
+  <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="url(#passGrad)" stroke-width="1.8" fill="url(#passGrad)" fill-opacity="0.2" stroke-linejoin="round"/>
+</svg>
+", quiz_fail:"إجابة غير صحيحة، حاول مرة أخرى.",
     en_note:"محتوى هذا الدرس متاح بالعربية حالياً، والترجمة الإنجليزية قيد الإعداد.",
-    greeting:"مرحباً", preview_banner:"🔓 معاينة مجانية — هذا الدرس متاح للجميع بدون تسجيل دخول.",
+    greeting:"مرحباً", preview_banner:"<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="lockGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#10B981" />
+    </linearGradient>
+  </defs>
+  <rect x="5" y="11" width="14" height="10" rx="2" stroke="url(#lockGrad)" stroke-width="1.8" fill="url(#lockGrad)" fill-opacity="0.15"/>
+  <path d="M8 11V7C8 4.79086 9.79086 3 12 3C13.8638 3 15.4299 4.27477 15.874 6" stroke="url(#lockGrad)" stroke-width="1.8" stroke-linecap="round"/>
+  <circle cx="12" cy="16" r="1" fill="url(#lockGrad)"/>
+</svg>
+ معاينة مجانية — هذا الدرس متاح للجميع بدون تسجيل دخول.",
     modal_title:"يرجى تسجيل الدخول أولاً",
     modal_body:"للوصول إلى هذا المحتوى التعليمي، تحتاج لتسجيل الدخول أو إنشاء حساب أولاً.",
     modal_cancel:"إلغاء", modal_confirm:"تسجيل الدخول",
