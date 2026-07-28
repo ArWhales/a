@@ -13,7 +13,7 @@ const I18N = {
     hub_subtitle:"اختر مساراً وابدأ التعلم خطوة بخطوة.",
     back_to_hub:"→ كل المسارات", toggle_lessons:"قائمة الدروس",
     prev_lesson:"الدرس السابق", next_lesson:"إنهاء الدرس والانتقال للتالي", next_lesson_done:"تم ✓ — الدرس التالي",
-    exam_title:"<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    exam_title:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="examGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#3B82F6" />
@@ -24,8 +24,8 @@ const I18N = {
   <path d="M14 2V8H20" stroke="url(#examGrad)" stroke-width="1.8" stroke-linejoin="round"/>
   <path d="M16 13H8M16 17H8M10 9H8" stroke="url(#examGrad)" stroke-width="1.5" stroke-linecap="round"/>
 </svg>
- اختبار اجتياز المستوى", exam_submit:"إرسال الإجابات",
-    quiz_title:"<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+ اختبار اجتياز المستوى`, exam_submit:"إرسال الإجابات",
+    quiz_title:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="examGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#3B82F6" />
@@ -36,8 +36,8 @@ const I18N = {
   <path d="M14 2V8H20" stroke="url(#examGrad)" stroke-width="1.8" stroke-linejoin="round"/>
   <path d="M16 13H8M16 17H8M10 9H8" stroke="url(#examGrad)" stroke-width="1.5" stroke-linecap="round"/>
 </svg>
- اختبر فهمك", quiz_submit:"تحقق من الإجابة",
-    quiz_pass:"إجابة صحيحة! أحسنت <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+ اختبر فهمك`, quiz_submit:"تحقق من الإجابة",
+    quiz_pass:`إجابة صحيحة! أحسنت <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="passGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#10B981" />
@@ -46,9 +46,9 @@ const I18N = {
   </defs>
   <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="url(#passGrad)" stroke-width="1.8" fill="url(#passGrad)" fill-opacity="0.2" stroke-linejoin="round"/>
 </svg>
-", quiz_fail:"إجابة غير صحيحة، حاول مرة أخرى.",
+`, quiz_fail:"إجابة غير صحيحة، حاول مرة أخرى.",
     en_note:"محتوى هذا الدرس متاح بالعربية حالياً، والترجمة الإنجليزية قيد الإعداد.",
-    greeting:"مرحباً", preview_banner:"<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    greeting:"مرحباً", preview_banner:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="lockGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#F59E0B" />
@@ -59,7 +59,7 @@ const I18N = {
   <path d="M8 11V7C8 4.79086 9.79086 3 12 3C13.8638 3 15.4299 4.27477 15.874 6" stroke="url(#lockGrad)" stroke-width="1.8" stroke-linecap="round"/>
   <circle cx="12" cy="16" r="1" fill="url(#lockGrad)"/>
 </svg>
- معاينة مجانية — هذا الدرس متاح للجميع بدون تسجيل دخول.",
+ معاينة مجانية — هذا الدرس متاح للجميع بدون تسجيل دخول.`,
     modal_title:"يرجى تسجيل الدخول أولاً",
     modal_body:"للوصول إلى هذا المحتوى التعليمي، تحتاج لتسجيل الدخول أو إنشاء حساب أولاً.",
     modal_cancel:"إلغاء", modal_confirm:"تسجيل الدخول",
@@ -72,7 +72,7 @@ const I18N = {
     hub_subtitle:"Pick a track and start learning step by step.",
     back_to_hub:"← All Tracks", toggle_lessons:"Lessons Menu",
     prev_lesson:"Previous Lesson", next_lesson:"Finish & Continue", next_lesson_done:"Done ✓ — Next Lesson",
-    exam_title:"<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    exam_title:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="examGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#3B82F6" />
@@ -83,8 +83,8 @@ const I18N = {
   <path d="M14 2V8H20" stroke="url(#examGrad)" stroke-width="1.8" stroke-linejoin="round"/>
   <path d="M16 13H8M16 17H8M10 9H8" stroke="url(#examGrad)" stroke-width="1.5" stroke-linecap="round"/>
 </svg>
- Level Exam", exam_submit:"Submit Answers",
-    quiz_title:"<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+ Level Exam`, exam_submit:"Submit Answers",
+    quiz_title:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="examGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#3B82F6" />
@@ -95,8 +95,8 @@ const I18N = {
   <path d="M14 2V8H20" stroke="url(#examGrad)" stroke-width="1.8" stroke-linejoin="round"/>
   <path d="M16 13H8M16 17H8M10 9H8" stroke="url(#examGrad)" stroke-width="1.5" stroke-linecap="round"/>
 </svg>
- Test Your Understanding", quiz_submit:"Check Answer",
-    quiz_pass:"Correct! Well done <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+ Test Your Understanding`, quiz_submit:"Check Answer",
+    quiz_pass:`Correct! Well done <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="passGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#10B981" />
@@ -105,9 +105,9 @@ const I18N = {
   </defs>
   <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="url(#passGrad)" stroke-width="1.8" fill="url(#passGrad)" fill-opacity="0.2" stroke-linejoin="round"/>
 </svg>
-", quiz_fail:"Not quite — try again.",
+`, quiz_fail:"Not quite — try again.",
     en_note:"This lesson's content is currently available in Arabic only — English translation is in progress.",
-    greeting:"Welcome", preview_banner:"<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    greeting:"Welcome", preview_banner:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="lockGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#F59E0B" />
@@ -118,7 +118,7 @@ const I18N = {
   <path d="M8 11V7C8 4.79086 9.79086 3 12 3C13.8638 3 15.4299 4.27477 15.874 6" stroke="url(#lockGrad)" stroke-width="1.8" stroke-linecap="round"/>
   <circle cx="12" cy="16" r="1" fill="url(#lockGrad)"/>
 </svg>
- Free preview — this lesson is open to everyone, no login required.",
+ Free preview — this lesson is open to everyone, no login required.`,
     modal_title:"Please log in first",
     modal_body:"To access this learning content, you need to log in or create an account first.",
     modal_cancel:"Cancel", modal_confirm:"Log In",
@@ -179,31 +179,7 @@ function buildEduDropdown(){
     const t = TRACKS[id];
     const title = currentLang === 'en' && t.title_en ? t.title_en : t.title;
     const tag = t.type === 'leveled' ? '3 مستويات' : (t.lessons.length + ' دروس');
-    html += `<a href="course.html?track=${id}">${t.icon || '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="bookGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#3B82F6" />
-      <stop offset="100%" stop-color="#1D4ED8" />
-    </linearGradient>
-    <linearGradient id="bookGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#60A5FA" />
-      <stop offset="100%" stop-color="#93C5FD" />
-    </linearGradient>
-  </defs>
-
-  <!-- غلاف الكتاب وصفحاته المفتوحة بشكل انسيابي -->
-  <path d="M4 19.5C4 18.1193 5.11929 17 6.5 17H20V4H6.5C5.11929 4 4 5.11929 4 6.5V19.5Z" stroke="url(#bookGrad)" stroke-width="1.8" fill="url(#bookGrad)" fill-opacity="0.15" stroke-linejoin="round"/>
-  <path d="M6.5 17C5.11929 17 4 18.1193 4 19.5C4 20.8807 5.11929 22 6.5 22H20V17H6.5Z" stroke="url(#bookGrad)" stroke-width="1.8" stroke-linejoin="round"/>
-  
-  <!-- أسطر المعرفة والبيانات داخل الكتاب -->
-  <path d="M8 8H16" stroke="url(#bookGlow)" stroke-width="1.5" stroke-linecap="round"/>
-  <path d="M8 11.5H14" stroke="url(#bookGlow)" stroke-width="1.5" stroke-linecap="round"/>
-  
-  <!-- بريق الشفرة/التكنولوجيا -->
-  <circle cx="18" cy="4" r="1.2" fill="url(#bookGlow)" />
-  <circle cx="3" cy="18" r="1" fill="url(#bookGlow)" />
-</svg>
-'} ${title} <span class="tag">${tag}</span></a>`;
+    html += `<a href="course.html?track=${id}">${t.icon || '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n  <defs>\n    <linearGradient id="bookGrad" x1="0%" y1="0%" x2="100%" y2="100%">\n      <stop offset="0%" stop-color="#3B82F6" />\n      <stop offset="100%" stop-color="#1D4ED8" />\n    </linearGradient>\n    <linearGradient id="bookGlow" x1="0%" y1="0%" x2="100%" y2="100%">\n      <stop offset="0%" stop-color="#60A5FA" />\n      <stop offset="100%" stop-color="#93C5FD" />\n    </linearGradient>\n  </defs>\n\n  <!-- غلاف الكتاب وصفحاته المفتوحة بشكل انسيابي -->\n  <path d="M4 19.5C4 18.1193 5.11929 17 6.5 17H20V4H6.5C5.11929 4 4 5.11929 4 6.5V19.5Z" stroke="url(#bookGrad)" stroke-width="1.8" fill="url(#bookGrad)" fill-opacity="0.15" stroke-linejoin="round"/>\n  <path d="M6.5 17C5.11929 17 4 18.1193 4 19.5C4 20.8807 5.11929 22 6.5 22H20V17H6.5Z" stroke="url(#bookGrad)" stroke-width="1.8" stroke-linejoin="round"/>\n  \n  <!-- أسطر المعرفة والبيانات داخل الكتاب -->\n  <path d="M8 8H16" stroke="url(#bookGlow)" stroke-width="1.5" stroke-linecap="round"/>\n  <path d="M8 11.5H14" stroke="url(#bookGlow)" stroke-width="1.5" stroke-linecap="round"/>\n  \n  <!-- بريق الشفرة/التكنولوجيا -->\n  <circle cx="18" cy="4" r="1.2" fill="url(#bookGlow)" />\n  <circle cx="3" cy="18" r="1" fill="url(#bookGlow)" />\n</svg>\n'} ${title} <span class="tag">${tag}</span></a>`;
   });
   list.innerHTML = html;
 }
@@ -506,65 +482,11 @@ function renderHub(){
     const pct = trackProgressPct(id, t);
     const completed = pct === 100;
     html += `<a class="hub-card" href="course.html?track=${id}">
-      <div class="icon">${t.icon || '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="bookGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#3B82F6" />
-      <stop offset="100%" stop-color="#1D4ED8" />
-    </linearGradient>
-    <linearGradient id="bookGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#60A5FA" />
-      <stop offset="100%" stop-color="#93C5FD" />
-    </linearGradient>
-  </defs>
-
-  <!-- غلاف الكتاب وصفحاته المفتوحة بشكل انسيابي -->
-  <path d="M4 19.5C4 18.1193 5.11929 17 6.5 17H20V4H6.5C5.11929 4 4 5.11929 4 6.5V19.5Z" stroke="url(#bookGrad)" stroke-width="1.8" fill="url(#bookGrad)" fill-opacity="0.15" stroke-linejoin="round"/>
-  <path d="M6.5 17C5.11929 17 4 18.1193 4 19.5C4 20.8807 5.11929 22 6.5 22H20V17H6.5Z" stroke="url(#bookGrad)" stroke-width="1.8" stroke-linejoin="round"/>
-  
-  <!-- أسطر المعرفة والبيانات داخل الكتاب -->
-  <path d="M8 8H16" stroke="url(#bookGlow)" stroke-width="1.5" stroke-linecap="round"/>
-  <path d="M8 11.5H14" stroke="url(#bookGlow)" stroke-width="1.5" stroke-linecap="round"/>
-  
-  <!-- بريق الشفرة/التكنولوجيا -->
-  <circle cx="18" cy="4" r="1.2" fill="url(#bookGlow)" />
-  <circle cx="3" cy="18" r="1" fill="url(#bookGlow)" />
-</svg>
-'}</div>
+      <div class="icon">${t.icon || '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n  <defs>\n    <linearGradient id="bookGrad" x1="0%" y1="0%" x2="100%" y2="100%">\n      <stop offset="0%" stop-color="#3B82F6" />\n      <stop offset="100%" stop-color="#1D4ED8" />\n    </linearGradient>\n    <linearGradient id="bookGlow" x1="0%" y1="0%" x2="100%" y2="100%">\n      <stop offset="0%" stop-color="#60A5FA" />\n      <stop offset="100%" stop-color="#93C5FD" />\n    </linearGradient>\n  </defs>\n\n  <!-- غلاف الكتاب وصفحاته المفتوحة بشكل انسيابي -->\n  <path d="M4 19.5C4 18.1193 5.11929 17 6.5 17H20V4H6.5C5.11929 4 4 5.11929 4 6.5V19.5Z" stroke="url(#bookGrad)" stroke-width="1.8" fill="url(#bookGrad)" fill-opacity="0.15" stroke-linejoin="round"/>\n  <path d="M6.5 17C5.11929 17 4 18.1193 4 19.5C4 20.8807 5.11929 22 6.5 22H20V17H6.5Z" stroke="url(#bookGrad)" stroke-width="1.8" stroke-linejoin="round"/>\n  \n  <!-- أسطر المعرفة والبيانات داخل الكتاب -->\n  <path d="M8 8H16" stroke="url(#bookGlow)" stroke-width="1.5" stroke-linecap="round"/>\n  <path d="M8 11.5H14" stroke="url(#bookGlow)" stroke-width="1.5" stroke-linecap="round"/>\n  \n  <!-- بريق الشفرة/التكنولوجيا -->\n  <circle cx="18" cy="4" r="1.2" fill="url(#bookGlow)" />\n  <circle cx="3" cy="18" r="1" fill="url(#bookGlow)" />\n</svg>\n'}</div>
       <h3>${title}</h3>
       <div class="meta">${count}</div>
       <div class="progress-bar-outer"><div class="progress-bar-inner" style="width:${pct}%"></div></div>
-      ${completed ? `<div class="badge-row"><span class="badge-pill"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- خلفية متدرجة للعملة -->
-  <defs>
-    <linearGradient id="coinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFD700" />
-      <stop offset="100%" stop-color="#FFA500" />
-    </linearGradient>
-    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00F2FE" />
-      <stop offset="100%" stop-color="#4FACFE" />
-    </linearGradient>
-  </defs>
-
-  <!-- الدائرة الخارجية (إطار العملة) -->
-  <circle cx="12" cy="12" r="9" stroke="url(#coinGrad)" stroke-width="2" fill="none" />
-  
-  <!-- الدائرة الداخلية -->
-  <circle cx="12" cy="12" r="7" fill="url(#coinGrad)" fill-opacity="0.15" />
-
-  <!-- رمز الكريبتو التكنولوجي (حرف ₿ أو رمز تقني شبكي) -->
-  <path d="M11 7H14C15.1046 7 16 7.89543 16 9C16 9.7958 15.5337 10.4828 14.8638 10.8038C15.5562 11.1098 16.0357 11.8021 16.0357 12.6071C16.0357 13.7117 15.1403 14.6071 14.0357 14.6071H11V7Z" stroke="url(#coinGrad)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M11 11H14.5" stroke="url(#coinGrad)" stroke-width="1.5" stroke-linecap="round"/>
-  <path d="M11 7V15" stroke="url(#coinGrad)" stroke-width="1.8" stroke-linecap="round"/>
-  <path d="M12.5 5.5V7" stroke="url(#coinGrad)" stroke-width="1.5" stroke-linecap="round"/>
-  <path d="M12.5 14.6V16.1" stroke="url(#coinGrad)" stroke-width="1.5" stroke-linecap="round"/>
-
-  <!-- لمسات بريق وتكنولوجيا حول العملة -->
-  <circle cx="19" cy="5" r="1" fill="url(#glowGrad)" />
-  <circle cx="5" cy="19" r="1.5" fill="url(#glowGrad)" />
-</svg>
- ${currentLang==='en' ? 'Completed' : 'مكتمل'}</span></div>` : ''}
+      ${completed ? `<div class="badge-row"><span class="badge-pill"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n  <!-- خلفية متدرجة للعملة -->\n  <defs>\n    <linearGradient id="coinGrad" x1="0%" y1="0%" x2="100%" y2="100%">\n      <stop offset="0%" stop-color="#FFD700" />\n      <stop offset="100%" stop-color="#FFA500" />\n    </linearGradient>\n    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">\n      <stop offset="0%" stop-color="#00F2FE" />\n      <stop offset="100%" stop-color="#4FACFE" />\n    </linearGradient>\n  </defs>\n\n  <!-- الدائرة الخارجية (إطار العملة) -->\n  <circle cx="12" cy="12" r="9" stroke="url(#coinGrad)" stroke-width="2" fill="none" />\n  \n  <!-- الدائرة الداخلية -->\n  <circle cx="12" cy="12" r="7" fill="url(#coinGrad)" fill-opacity="0.15" />\n\n  <!-- رمز الكريبتو التكنولوجي (حرف ₿ أو رمز تقني شبكي) -->\n  <path d="M11 7H14C15.1046 7 16 7.89543 16 9C16 9.7958 15.5337 10.4828 14.8638 10.8038C15.5562 11.1098 16.0357 11.8021 16.0357 12.6071C16.0357 13.7117 15.1403 14.6071 14.0357 14.6071H11V7Z" stroke="url(#coinGrad)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>\n  <path d="M11 11H14.5" stroke="url(#coinGrad)" stroke-width="1.5" stroke-linecap="round"/>\n  <path d="M11 7V15" stroke="url(#coinGrad)" stroke-width="1.8" stroke-linecap="round"/>\n  <path d="M12.5 5.5V7" stroke="url(#coinGrad)" stroke-width="1.5" stroke-linecap="round"/>\n  <path d="M12.5 14.6V16.1" stroke="url(#coinGrad)" stroke-width="1.5" stroke-linecap="round"/>\n\n  <!-- لمسات بريق وتكنولوجيا حول العملة -->\n  <circle cx="19" cy="5" r="1" fill="url(#glowGrad)" />\n  <circle cx="5" cy="19" r="1.5" fill="url(#glowGrad)" />\n</svg>\n ${currentLang==='en' ? 'Completed' : 'مكتمل'}</span></div>` : ''}
     </a>`;
   });
   grid.innerHTML = html;
@@ -583,31 +505,7 @@ function buildSidebar(){
   const t = I18N[currentLang];
   let html = `<div class="back-to-hub" onclick="window.location.href='course.html'">${t.back_to_hub}</div>`;
   const trackTitle = currentLang === 'en' && track.title_en ? track.title_en : track.title;
-  html += `<div class="course-title">${track.icon || '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="bookGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#3B82F6" />
-      <stop offset="100%" stop-color="#1D4ED8" />
-    </linearGradient>
-    <linearGradient id="bookGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#60A5FA" />
-      <stop offset="100%" stop-color="#93C5FD" />
-    </linearGradient>
-  </defs>
-
-  <!-- غلاف الكتاب وصفحاته المفتوحة بشكل انسيابي -->
-  <path d="M4 19.5C4 18.1193 5.11929 17 6.5 17H20V4H6.5C5.11929 4 4 5.11929 4 6.5V19.5Z" stroke="url(#bookGrad)" stroke-width="1.8" fill="url(#bookGrad)" fill-opacity="0.15" stroke-linejoin="round"/>
-  <path d="M6.5 17C5.11929 17 4 18.1193 4 19.5C4 20.8807 5.11929 22 6.5 22H20V17H6.5Z" stroke="url(#bookGrad)" stroke-width="1.8" stroke-linejoin="round"/>
-  
-  <!-- أسطر المعرفة والبيانات داخل الكتاب -->
-  <path d="M8 8H16" stroke="url(#bookGlow)" stroke-width="1.5" stroke-linecap="round"/>
-  <path d="M8 11.5H14" stroke="url(#bookGlow)" stroke-width="1.5" stroke-linecap="round"/>
-  
-  <!-- بريق الشفرة/التكنولوجيا -->
-  <circle cx="18" cy="4" r="1.2" fill="url(#bookGlow)" />
-  <circle cx="3" cy="18" r="1" fill="url(#bookGlow)" />
-</svg>
-'} ${trackTitle}</div>`;
+  html += `<div class="course-title">${track.icon || '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n  <defs>\n    <linearGradient id="bookGrad" x1="0%" y1="0%" x2="100%" y2="100%">\n      <stop offset="0%" stop-color="#3B82F6" />\n      <stop offset="100%" stop-color="#1D4ED8" />\n    </linearGradient>\n    <linearGradient id="bookGlow" x1="0%" y1="0%" x2="100%" y2="100%">\n      <stop offset="0%" stop-color="#60A5FA" />\n      <stop offset="100%" stop-color="#93C5FD" />\n    </linearGradient>\n  </defs>\n\n  <!-- غلاف الكتاب وصفحاته المفتوحة بشكل انسيابي -->\n  <path d="M4 19.5C4 18.1193 5.11929 17 6.5 17H20V4H6.5C5.11929 4 4 5.11929 4 6.5V19.5Z" stroke="url(#bookGrad)" stroke-width="1.8" fill="url(#bookGrad)" fill-opacity="0.15" stroke-linejoin="round"/>\n  <path d="M6.5 17C5.11929 17 4 18.1193 4 19.5C4 20.8807 5.11929 22 6.5 22H20V17H6.5Z" stroke="url(#bookGrad)" stroke-width="1.8" stroke-linejoin="round"/>\n  \n  <!-- أسطر المعرفة والبيانات داخل الكتاب -->\n  <path d="M8 8H16" stroke="url(#bookGlow)" stroke-width="1.5" stroke-linecap="round"/>\n  <path d="M8 11.5H14" stroke="url(#bookGlow)" stroke-width="1.5" stroke-linecap="round"/>\n  \n  <!-- بريق الشفرة/التكنولوجيا -->\n  <circle cx="18" cy="4" r="1.2" fill="url(#bookGlow)" />\n  <circle cx="3" cy="18" r="1" fill="url(#bookGlow)" />\n</svg>\n'} ${trackTitle}</div>`;
 
   if(track.type === 'leveled'){
     track.levels.forEach((level, li) => {
@@ -617,23 +515,7 @@ function buildSidebar(){
       const levelName = currentLang === 'en' && level.name_en ? level.name_en : level.name;
       html += `<div class="level-block ${openClass} ${lockedClass}" data-level="${li}">
         <div class="level-head" onclick="toggleLevel(${li})">
-          <span>${unlocked ? '' : '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="secGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00F2FE" />
-      <stop offset="100%" stop-color="#4FACFE" />
-    </linearGradient>
-  </defs>
-  <!-- درع الحماية -->
-  <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="url(#secGrad)" stroke-width="1.8" stroke-linejoin="round"/>
-  <!-- القفل الداخلي -->
-  <rect x="9.5" y="11" width="5" height="4.5" rx="1" stroke="url(#secGrad)" stroke-width="1.5" fill="url(#secGrad)" fill-opacity="0.2"/>
-  <path d="M10.5 11V9.5C10.5 8.67157 11.1716 8 12 8C12.8284 8 13.5 8.67157 13.5 9.5V11" stroke="url(#secGrad)" stroke-width="1.5" stroke-linecap="round"/>
-  <!-- نقاط مضيئة -->
-  <circle cx="18" cy="5" r="1" fill="url(#secGrad)"/>
-  <circle cx="6" cy="18" r="1" fill="url(#secGrad)"/>
-</svg>
- '}${levelName}</span>
+          <span>${unlocked ? '' : '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n  <defs>\n    <linearGradient id="secGrad" x1="0%" y1="0%" x2="100%" y2="100%">\n      <stop offset="0%" stop-color="#00F2FE" />\n      <stop offset="100%" stop-color="#4FACFE" />\n    </linearGradient>\n  </defs>\n  <!-- درع الحماية -->\n  <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="url(#secGrad)" stroke-width="1.8" stroke-linejoin="round"/>\n  <!-- القفل الداخلي -->\n  <rect x="9.5" y="11" width="5" height="4.5" rx="1" stroke="url(#secGrad)" stroke-width="1.5" fill="url(#secGrad)" fill-opacity="0.2"/>\n  <path d="M10.5 11V9.5C10.5 8.67157 11.1716 8 12 8C12.8284 8 13.5 8.67157 13.5 9.5V11" stroke="url(#secGrad)" stroke-width="1.5" stroke-linecap="round"/>\n  <!-- نقاط مضيئة -->\n  <circle cx="18" cy="5" r="1" fill="url(#secGrad)"/>\n  <circle cx="6" cy="18" r="1" fill="url(#secGrad)"/>\n</svg>\n '}${levelName}</span>
           <span class="badge">${level.badge}</span>
         </div>
         <div class="level-lessons">`;
@@ -850,7 +732,7 @@ function renderExam(){
     const nextLevelName = nextLevel ? (currentLang==='en' && nextLevel.name_en ? nextLevel.name_en : nextLevel.name) : null;
     resultDiv.innerHTML = `
       <div class="exam-result ${passed ? 'pass' : 'fail'}">
-        <h3>${passed ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <h3>${passed ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="passGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#10B981" />
@@ -859,7 +741,7 @@ function renderExam(){
   </defs>
   <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="url(#passGrad)" stroke-width="1.8" fill="url(#passGrad)" fill-opacity="0.2" stroke-linejoin="round"/>
 </svg>
- ' + (currentLang==='en'?'Congratulations, you passed!':'مبروك، لقد اجتزت المستوى!') : '😕 ' + (currentLang==='en'?'Not quite there yet':'لم تحقق النسبة المطلوبة بعد')}</h3>
+ ` + (currentLang==='en'?'Congratulations, you passed!':'مبروك، لقد اجتزت المستوى!') : '😕 ' + (currentLang==='en'?'Not quite there yet':'لم تحقق النسبة المطلوبة بعد')}</h3>
         <div class="score">${correct} / ${level.exam.questions.length} (${scorePct}%)</div>
         <p style="color:var(--text-dim);">${passed
           ? (nextLevel ? (currentLang==='en'?`${nextLevelName} is now unlocked.`:`تم فتح ${nextLevelName} الآن.`) : (currentLang==='en'?'You completed the whole track!':'لقد أكملت المسار بالكامل!'))
