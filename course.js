@@ -5,6 +5,28 @@
    ========================================================= */
 
 /* ===================== i18n dictionary (UI chrome) ===================== */
+
+// أضف هذا في أول ملف course.js مباشرةً إذا لم يكن موجوداً
+window.TRACKS = window.TRACKS || {
+  "crypto-basics": {
+    type: "leveled",
+    title: "أساسيات الكريبتو",
+    title_en: "Crypto Basics",
+    icon: "🪙",
+    levels: [
+      {
+        id: "lvl1",
+        name: "المستوى الأول",
+        badge: "مبتدئ",
+        lessons: [
+          { id: "les1", title: "مقدمة في البلوكشين", content: "محتوى الدرس الأول..." }
+        ],
+        exam: { pass: 70, questions: [] }
+      }
+    ]
+  }
+};
+
 const I18N = {
   ar: {
     nav_home:"الرئيسية", nav_about:"من نحن", nav_edu:"التعليم ▾", nav_articles:"المقالات",
