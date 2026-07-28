@@ -151,10 +151,15 @@ let currentLang = localStorage.getItem('aw_lang') || 'ar';
 
 function applyLang(){
   const t = I18N[currentLang];
-  document.getElementById('htmlRoot').lang = currentLang;
-  document.getElementById('htmlRoot').dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+  const root = document.getElementById('htmlRoot');
+  if(root) {
+    root.lang = currentLang;
+    root.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+  }
   document.body.classList.toggle('lang-en', currentLang === 'en');
-  document.getElementById('langToggle').textContent = currentLang === 'ar' ? '🌐 EN' : '🌐 AR';
+  const langToggle = document.getElementById('langToggle');
+  if(langToggle) langToggle.textContent = currentLang === 'ar' ? '🌐 EN' : '🌐 AR';
+  
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if(t[key]){
@@ -165,22 +170,35 @@ function applyLang(){
       }
     }
   });
-  document.getElementById('modalTitle').textContent = t.modal_title;
-  document.getElementById('modalBody').textContent = t.modal_body;
-  document.getElementById('modalCancel').textContent = t.modal_cancel;
-  document.getElementById('modalConfirm').textContent = t.modal_confirm;
+  
+  const mTitle = document.getElementById('modalTitle');
+  if(mTitle) mTitle.textContent = t.modal_title;
+  const mBody = document.getElementById('modalBody');
+  if(mBody) mBody.textContent = t.modal_body;
+  const mCancel = document.getElementById('modalCancel');
+  if(mCancel) mCancel.textContent = t.modal_cancel;
+  const mConfirm = document.getElementById('modalConfirm');
+  if(mConfirm) mConfirm.textContent = t.modal_confirm;
+
   if(!currentTrackId){
-    document.getElementById('pageEyebrow').textContent = t.hub_eyebrow;
-    document.getElementById('pageMainTitle').textContent = t.hub_title;
-    document.getElementById('pageSubtitle').textContent = t.hub_subtitle;
+    const pEyebrow = document.getElementById('pageEyebrow');
+    if(pEyebrow) pEyebrow.textContent = t.hub_eyebrow;
+    const pTitle = document.getElementById('pageMainTitle');
+    if(pTitle) pTitle.textContent = t.hub_title;
+    const pSub = document.getElementById('pageSubtitle');
+    if(pSub) pSub.textContent = t.hub_subtitle;
   }
   if(currentTrackId) render();
 }
-document.getElementById('langToggle').addEventListener('click', () => {
-  currentLang = currentLang === 'ar' ? 'en' : 'ar';
-  localStorage.setItem('aw_lang', currentLang);
-  applyLang();
-});
+
+const langBtn = document.getElementById('langToggle');
+if(langBtn) {
+  langBtn.addEventListener('click', () => {
+    currentLang = currentLang === 'ar' ? 'en' : 'ar';
+    localStorage.setItem('aw_lang', currentLang);
+    applyLang();
+  });
+}
 
 /* Helpers to pick translated field with graceful fallback */
 function tField(obj, base){
@@ -190,17 +208,22 @@ function tField(obj, base){
 function hasEnglish(obj){ return !!(obj.title_en && obj.content_en); }
 
 /* ===================== Nav: hamburger + dropdown ===================== */
-document.getElementById('navHamburger').addEventListener('click', () => {
-  document.getElementById('navLinks').classList.toggle('mobile-open');
-});
+const navHamburger = document.getElementById('navHamburger');
+if(navHamburger) {
+  navHamburger.addEventListener('click', () => {
+    const navLinks = document.getElementById('navLinks');
+    if(navLinks) navLinks.classList.toggle('mobile-open');
+  });
+}
 
 function buildEduDropdown(){
   const list = document.getElementById('eduDropdownList');
+  if(!list || typeof TRACKS === 'undefined') return;
   let html = '';
   Object.keys(TRACKS).forEach(id => {
     const t = TRACKS[id];
     const title = currentLang === 'en' && t.title_en ? t.title_en : t.title;
-    const tag = t.type === 'leveled' ? '3 مستويات' : (t.lessons.length + ' دروس');
+    const tag = t.type === 'leveled' ? '3 مستويات' : (t.lessons ? t.lessons.length + ' دروس' : '');
     html += `<a href="course.html?track=${id}">${t.icon || '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bookGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#3B82F6" /><stop offset="100%" stop-color="#1D4ED8" /></linearGradient><linearGradient id="bookGlow" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#60A5FA" /><stop offset="100%" stop-color="#93C5FD" /></linearGradient></defs><path d="M4 19.5C4 18.1193 5.11929 17 6.5 17H20V4H6.5C5.11929 4 4 5.11929 4 6.5V19.5Z" stroke="url(#bookGrad)" stroke-width="1.8" fill="url(#bookGrad)" fill-opacity="0.15" stroke-linejoin="round"/><path d="M6.5 17C5.11929 17 4 18.1193 4 19.5C4 20.8807 5.11929 22 6.5 22H20V17H6.5Z" stroke="url(#bookGrad)" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 8H16" stroke="url(#bookGlow)" stroke-width="1.5" stroke-linecap="round"/><path d="M8 11.5H14" stroke="url(#bookGlow)" stroke-width="1.5" stroke-linecap="round"/><circle cx="18" cy="4" r="1.2" fill="url(#bookGlow)" /><circle cx="3" cy="18" r="1" fill="url(#bookGlow)" /></svg>'} ${title} <span class="tag">${tag}</span></a>`;
   });
   list.innerHTML = html;
@@ -208,8 +231,10 @@ function buildEduDropdown(){
 
 const eduDropdown = document.getElementById('eduDropdown');
 const eduTrigger = document.getElementById('eduTrigger');
-eduTrigger.addEventListener('click', (e) => { e.stopPropagation(); eduDropdown.classList.toggle('open'); });
-document.addEventListener('click', (e) => { if(!eduDropdown.contains(e.target)){ eduDropdown.classList.remove('open'); } });
+if(eduTrigger && eduDropdown) {
+  eduTrigger.addEventListener('click', (e) => { e.stopPropagation(); eduDropdown.classList.toggle('open'); });
+  document.addEventListener('click', (e) => { if(!eduDropdown.contains(e.target)){ eduDropdown.classList.remove('open'); } });
+}
 
 /* ===================== Ticker ===================== */
 const FALLBACK_COINS = [
@@ -226,6 +251,7 @@ function fetchWithTimeout(url, ms=8000){
 }
 function renderTicker(coins){
   const track = document.getElementById('tickerTrack');
+  if(!track) return;
   const items = coins.map(c => {
     if(c.chg === null){
       return `<div class="tick-item"><span class="tick-sym">${c.symbol}</span><span class="tick-price">${c.price}</span></div>`;
@@ -266,6 +292,7 @@ async function tryCoinCap(){
 let tickerRetries = 0;
 async function loadTicker(){
   const track = document.getElementById('tickerTrack');
+  if(!track) return;
   try{ const coins = await tryCoinGecko(); renderTicker(coins); tickerRetries = 0; return; }
   catch(e1){
     try{ const coins = await tryCoinCap(); renderTicker(coins); tickerRetries = 0; return; }
@@ -285,7 +312,7 @@ let userIsLoggedIn = false;
 let currentUsername = null;
 
 async function checkLoginStatus(){
-  if(IS_BACKEND_CONFIGURED){
+  if(typeof IS_BACKEND_CONFIGURED !== 'undefined' && IS_BACKEND_CONFIGURED){
     const { data: { session } } = await supabaseClient.auth.getSession();
     if(session && session.user.email_confirmed_at){
       userIsLoggedIn = true;
@@ -302,25 +329,43 @@ async function checkLoginStatus(){
   updateAuthNavUI();
 }
 function updateAuthNavUI(){
-  document.getElementById('joinBtn').style.display = userIsLoggedIn ? 'none' : '';
-  document.getElementById('authNavBtn').style.display = userIsLoggedIn ? 'none' : '';
+  const joinBtn = document.getElementById('joinBtn');
+  if(joinBtn) joinBtn.style.display = userIsLoggedIn ? 'none' : '';
+  const authNavBtn = document.getElementById('authNavBtn');
+  if(authNavBtn) authNavBtn.style.display = userIsLoggedIn ? 'none' : '';
   const badge = document.getElementById('userBadge');
-  badge.style.display = userIsLoggedIn ? 'flex' : 'none';
-  if(userIsLoggedIn) document.getElementById('userBadgeName').textContent = currentUsername;
+  if(badge) badge.style.display = userIsLoggedIn ? 'flex' : 'none';
+  const badgeName = document.getElementById('userBadgeName');
+  if(userIsLoggedIn && badgeName) badgeName.textContent = currentUsername;
 }
-function closeLoginModal(){ document.getElementById('loginModalOverlay').style.display = 'none'; }
-function showLoginModal(){ document.getElementById('loginModalOverlay').style.display = 'flex'; }
+function closeLoginModal(){ 
+  const overlay = document.getElementById('loginModalOverlay');
+  if(overlay) overlay.style.display = 'none'; 
+}
+function showLoginModal(){ 
+  const overlay = document.getElementById('loginModalOverlay');
+  if(overlay) overlay.style.display = 'flex'; 
+}
 
 /* ===================== Lightbox ===================== */
 function openLightbox(url, caption){
-  document.getElementById('lightboxImg').src = url;
-  document.getElementById('lightboxCaption').textContent = caption || '';
-  document.getElementById('lightboxOverlay').style.display = 'flex';
+  const img = document.getElementById('lightboxImg');
+  if(img) img.src = url;
+  const cap = document.getElementById('lightboxCaption');
+  if(cap) cap.textContent = caption || '';
+  const overlay = document.getElementById('lightboxOverlay');
+  if(overlay) overlay.style.display = 'flex';
 }
-function closeLightbox(){ document.getElementById('lightboxOverlay').style.display = 'none'; }
-document.getElementById('lightboxOverlay').addEventListener('click', (e) => {
-  if(e.target.id === 'lightboxOverlay') closeLightbox();
-});
+function closeLightbox(){ 
+  const overlay = document.getElementById('lightboxOverlay');
+  if(overlay) overlay.style.display = 'none'; 
+}
+const lbOverlay = document.getElementById('lightboxOverlay');
+if(lbOverlay) {
+  lbOverlay.addEventListener('click', (e) => {
+    if(e.target.id === 'lightboxOverlay') closeLightbox();
+  });
+}
 
 /* ===================== Progress / storage helpers ===================== */
 const STORAGE_PREFIX = "aw_course_";
@@ -364,12 +409,15 @@ function renderComments(key){
   `;
 }
 function wireCommentForm(key){
-  document.getElementById('commentSubmit').onclick = () => {
+  const submitBtn = document.getElementById('commentSubmit');
+  if(!submitBtn) return;
+  submitBtn.onclick = () => {
     const input = document.getElementById('commentInput');
-    if(input.value.trim() === '') return;
+    if(!input || input.value.trim() === '') return;
     addComment(key, input.value.trim());
     input.value = '';
-    document.getElementById('commentsList').innerHTML = commentsListHtml(key);
+    const list = document.getElementById('commentsList');
+    if(list) list.innerHTML = commentsListHtml(key);
   };
 }
 
@@ -464,7 +512,7 @@ function wireLessonQuiz(lesson, trackId, keyPrefix){
       else if(idx === oi) o.classList.add('wrong');
     });
     const passed = oi === lesson.quiz.correct;
-    feedback.innerHTML = `<div class="quiz-feedback ${passed ? 'pass' : 'fail'}">${passed ? t.quiz_pass : t.quiz_fail}</div>`;
+    if(feedback) feedback.innerHTML = `<div class="quiz-feedback ${passed ? 'pass' : 'fail'}">${passed ? t.quiz_pass : t.quiz_fail}</div>`;
     if(passed){
       markLessonDone(trackId, keyPrefix + '_quiz');
       buildSidebar();
@@ -494,13 +542,18 @@ function trackProgressPct(id, track){
 }
 function renderHub(){
   const grid = document.getElementById('hubGrid');
+  if(!grid) return;
+  if (typeof TRACKS === 'undefined' || !TRACKS || Object.keys(TRACKS).length === 0) {
+    grid.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-dim);">⚠️ لم يتم العثور على بيانات المسارات.</div>';
+    return;
+  }
   let html = '';
   Object.keys(TRACKS).forEach(id => {
     const t = TRACKS[id];
     const title = currentLang === 'en' && t.title_en ? t.title_en : t.title;
     const count = t.type === 'leveled'
       ? t.levels.reduce((s,l)=>s+l.lessons.length,0) + (currentLang==='en' ? ' lessons · 3 levels' : ' درس · 3 مستويات')
-      : t.lessons.length + (currentLang==='en' ? ' lessons' : ' دروس');
+      : (t.lessons ? t.lessons.length : 0) + (currentLang==='en' ? ' lessons' : ' دروس');
     const pct = trackProgressPct(id, t);
     const completed = pct === 100;
     html += `<a class="hub-card" href="course.html?track=${id}">
@@ -523,6 +576,7 @@ let currentView = "lesson";
 
 function buildSidebar(){
   const sidebar = document.getElementById('sidebar');
+  if(!sidebar || !TRACKS[currentTrackId]) return;
   const track = TRACKS[currentTrackId];
   const t = I18N[currentLang];
   let html = `<div class="back-to-hub" onclick="window.location.href='course.html'">${t.back_to_hub}</div>`;
@@ -637,6 +691,7 @@ function renderLeveledLesson(){
   const keyPrefix = level.id + '_' + lesson.id;
 
   const main = document.getElementById('mainPane');
+  if(!main) return;
   main.innerHTML = `
     <div class="progress-bar-outer"><div class="progress-bar-inner" style="width:${pct}%"></div></div>
     ${previewBannerHtml(track, currentLevelIndex, currentLessonIndex)}
@@ -657,8 +712,10 @@ function renderLeveledLesson(){
   wireCommentForm(keyPrefix);
   wireLessonQuiz(lesson, level.id, keyPrefix);
 
-  document.getElementById('prevBtn').onclick = () => { if(currentLessonIndex > 0){ currentLessonIndex--; render(); } };
-  document.getElementById('nextBtn').onclick = () => {
+  const prevBtn = document.getElementById('prevBtn');
+  if(prevBtn) prevBtn.onclick = () => { if(currentLessonIndex > 0){ currentLessonIndex--; render(); } };
+  const nextBtn = document.getElementById('nextBtn');
+  if(nextBtn) nextBtn.onclick = () => {
     if(currentLessonIndex < level.lessons.length - 1){ currentLessonIndex++; render(); }
     else { currentView = "exam"; render(); }
   };
@@ -675,6 +732,7 @@ function renderFlatLesson(){
   const keyPrefix = currentTrackId + '_' + lesson.id;
 
   const main = document.getElementById('mainPane');
+  if(!main) return;
   main.innerHTML = `
     <div class="progress-bar-outer"><div class="progress-bar-inner" style="width:${pct}%"></div></div>
     ${previewBannerHtml(track, 0, currentLessonIndex)}
@@ -695,32 +753,39 @@ function renderFlatLesson(){
   wireCommentForm(keyPrefix);
   wireLessonQuiz(lesson, currentTrackId, keyPrefix);
 
-  document.getElementById('prevBtn').onclick = () => { if(currentLessonIndex > 0){ currentLessonIndex--; render(); } };
-  document.getElementById('nextBtn').onclick = () => {
+  const prevBtn = document.getElementById('prevBtn');
+  if(prevBtn) prevBtn.onclick = () => { if(currentLessonIndex > 0){ currentLessonIndex--; render(); } };
+  const nextBtn = document.getElementById('nextBtn');
+  if(nextBtn) nextBtn.onclick = () => {
     if(currentLessonIndex < track.lessons.length - 1){ currentLessonIndex++; render(); }
   };
 }
+
+function levelName2(level){ return level ? level.name : ''; }
 
 function renderExam(){
   const track = TRACKS[currentTrackId];
   const level = track.levels[currentLevelIndex];
   const t = I18N[currentLang];
   const main = document.getElementById('mainPane');
+  if(!main) return;
   let html = `
     <div class="lesson-eyebrow">${currentLang==='en' && level.name_en ? level.name_en : level.name}</div>
     <h2 class="lesson-title">${t.exam_title}</h2>
     <p class="lesson-content" style="margin-bottom:20px;">${currentLang==='en' ? `Answer the following questions. You need at least ${level.exam.pass}% to pass and unlock the next level.` : `أجب عن الأسئلة التالية، وتحتاج ${level.exam.pass}% على الأقل للنجاح وفتح المستوى التالي.`}</p>
     <form id="examForm">
   `;
-  level.exam.questions.forEach((q, qi) => {
-    const qText = currentLang === 'en' && q.q_en ? q.q_en : q.q;
-    const opts = currentLang === 'en' && q.options_en ? q.options_en : q.options;
-    html += `<div class="exam-q"><h4>${qi+1}. ${qText}</h4>`;
-    opts.forEach((opt, oi) => {
-      html += `<label class="exam-opt" data-q="${qi}" data-o="${oi}"><input type="radio" name="q${qi}" value="${oi}"> ${opt}</label>`;
+  if(level.exam && level.exam.questions) {
+    level.exam.questions.forEach((q, qi) => {
+      const qText = currentLang === 'en' && q.q_en ? q.q_en : q.q;
+      const opts = currentLang === 'en' && q.options_en ? q.options_en : q.options;
+      html += `<div class="exam-q"><h4>${qi+1}. ${qText}</h4>`;
+      opts.forEach((opt, oi) => {
+        html += `<label class="exam-opt" data-q="${qi}" data-o="${oi}"><input type="radio" name="q${qi}" value="${oi}"> ${opt}</label>`;
+      });
+      html += `</div>`;
     });
-    html += `</div>`;
-  });
+  }
   html += `</form><button class="btn-primary" id="submitExamBtn">${t.exam_submit}</button><div id="examResult"></div>`;
   main.innerHTML = html;
   buildSidebar();
@@ -733,49 +798,57 @@ function renderExam(){
     });
   });
 
-  document.getElementById('submitExamBtn').onclick = (e) => {
-    e.preventDefault();
-    let correct = 0;
-    level.exam.questions.forEach((q, qi) => {
-      const selected = main.querySelector(`.exam-opt[data-q="${qi}"].selected`);
-      const selectedIdx = selected ? parseInt(selected.dataset.o) : -1;
-      main.querySelectorAll(`.exam-opt[data-q="${qi}"]`).forEach(o => {
-        const oi = parseInt(o.dataset.o);
-        if(oi === q.correct) o.classList.add('correct');
-        else if(oi === selectedIdx) o.classList.add('wrong');
-      });
-      if(selectedIdx === q.correct) correct++;
-    });
-    const scorePct = Math.round((correct / level.exam.questions.length) * 100);
-    const passed = scorePct >= level.exam.pass;
-    if(passed) markExamPassed(level.id);
-    const resultDiv = document.getElementById('examResult');
-    const nextLevel = track.levels[currentLevelIndex + 1];
-    const nextLevelName = nextLevel ? (currentLang==='en' && nextLevel.name_en ? nextLevel.name_en : nextLevel.name) : null;
-    
-    const passIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="passGradEx" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10B981" /><stop offset="100%" stop-color="#34D399" /></linearGradient></defs><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="url(#passGradEx)" stroke-width="1.8" fill="url(#passGradEx)" fill-opacity="0.2" stroke-linejoin="round"/></svg>`;
-    const titleText = passed ? `${passIcon} ${currentLang==='en'?'Congratulations, you passed!':'مبروك، لقد اجتزت المستوى!'}` : `😕 ${currentLang==='en'?'Not quite there yet':'لم تحقق النسبة المطلوبة بعد'}`;
-    
-    resultDiv.innerHTML = `
-      <div class="exam-result ${passed ? 'pass' : 'fail'}">
-        <h3>${titleText}</h3>
-        <div class="score">${correct} / ${level.exam.questions.length} (${scorePct}%)</div>
-        <p style="color:var(--text-dim);">${passed
-          ? (nextLevel ? (currentLang==='en'?`${nextLevelName} is now unlocked.`:`تم فتح ${nextLevelName} الآن.`) : (currentLang==='en'?'You completed the whole track!':'لقد أكملت المسار بالكامل!'))
-          : (currentLang==='en'?'Review the lessons and try again.':`أعد مراجعة دروس ${levelName2(level)} وحاول مرة أخرى.`)}</p>
-        ${passed && nextLevel ? `<button class="btn-primary" style="margin-top:14px;" onclick="goToLesson(${currentLevelIndex+1}, 0)">${currentLang==='en'?'Start':'ابدأ'} ${nextLevelName}</button>` : ''}
-        ${!passed ? `<button class="btn-ghost" style="margin-top:14px;" onclick="goToLesson(${currentLevelIndex}, 0)">${currentLang==='en'?'Review Lessons':'مراجعة الدروس'}</button>` : ''}
-      </div>
-    `;
-    document.getElementById('submitExamBtn').style.display = 'none';
-    buildSidebar();
-  };
+  const submitBtn = document.getElementById('submitExamBtn');
+  if(submitBtn) {
+    submitBtn.onclick = (e) => {
+      e.preventDefault();
+      let correct = 0;
+      if(level.exam && level.exam.questions) {
+        level.exam.questions.forEach((q, qi) => {
+          const selected = main.querySelector(`.exam-opt[data-q="${qi}"].selected`);
+          const selectedIdx = selected ? parseInt(selected.dataset.o) : -1;
+          main.querySelectorAll(`.exam-opt[data-q="${qi}"]`).forEach(o => {
+            const oi = parseInt(o.dataset.o);
+            if(oi === q.correct) o.classList.add('correct');
+            else if(oi === selectedIdx) o.classList.add('wrong');
+          });
+          if(selectedIdx === q.correct) correct++;
+        });
+      }
+      const totalQ = (level.exam && level.exam.questions) ? level.exam.questions.length : 1;
+      const scorePct = Math.round((correct / totalQ) * 100);
+      const passed = scorePct >= level.exam.pass;
+      if(passed) markExamPassed(level.id);
+      const resultDiv = document.getElementById('examResult');
+      const nextLevel = track.levels[currentLevelIndex + 1];
+      const nextLevelName = nextLevel ? (currentLang==='en' && nextLevel.name_en ? nextLevel.name_en : nextLevel.name) : null;
+
+      const passIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="passGradEx" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10B981" /><stop offset="100%" stop-color="#34D399" /></linearGradient></defs><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="url(#passGradEx)" stroke-width="1.8" fill="url(#passGradEx)" fill-opacity="0.2" stroke-linejoin="round"/></svg>`;
+      const titleText = passed ? `${passIcon} ${currentLang==='en'?'Congratulations, you passed!':'مبروك، لقد اجتزت المستوى!'}` : `😕 ${currentLang==='en'?'Not quite there yet':'لم تحقيق النسبة المطلوبة بعد'}`;
+
+      if(resultDiv) {
+        resultDiv.innerHTML = `
+          <div class="exam-result ${passed ? 'pass' : 'fail'}">
+            <h3>${titleText}</h3>
+            <div class="score">${correct} / ${totalQ} (${scorePct}%)</div>
+            <p style="color:var(--text-dim);">${passed
+              ? (nextLevel ? (currentLang==='en'?`${nextLevelName} is now unlocked.`:`تم فتح ${nextLevelName} الآن.`) : (currentLang==='en'?'You completed the whole track!':'لقد أكملت المسار بالكامل!'))
+              : (currentLang==='en'?'Review the lessons and try again.':`أعد مراجعة دروس ${levelName2(level)} وحاول مرة أخرى.`)}</p>
+            ${passed && nextLevel ? `<button class="btn-primary" style="margin-top:14px;" onclick="goToLesson(${currentLevelIndex+1}, 0)">${currentLang==='en'?'Start':'ابدأ'} ${nextLevelName}</button>` : ''}
+            ${!passed ? `<button class="btn-ghost" style="margin-top:14px;" onclick="goToLesson(${currentLevelIndex}, 0)">${currentLang==='en'?'Review Lessons':'مراجعة الدروس'}</button>` : ''}
+          </div>
+        `;
+      }
+      submitBtn.style.display = 'none';
+      buildSidebar();
+    };
+  }
 }
-function levelName2(level){ return level.name; }
 
 function renderLockedState(track){
   const t = I18N[currentLang];
   const main = document.getElementById('mainPane');
+  if(!main) return;
   main.innerHTML = `
     <div class="locked-card">
       <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -804,6 +877,7 @@ function renderLockedState(track){
 }
 
 function render(){
+  if(typeof TRACKS === 'undefined' || !TRACKS[currentTrackId]) return;
   const track = TRACKS[currentTrackId];
   if(requiresLogin(track, currentLevelIndex, currentLessonIndex) && currentView !== 'exam'){
     renderLockedState(track);
@@ -821,31 +895,51 @@ function render(){
 }
 
 /* ===================== Mobile sidebar toggle ===================== */
-document.getElementById('sidebarToggleMobile').addEventListener('click', () => {
-  document.getElementById('sidebar').classList.toggle('mobile-visible');
-});
+const sidebarToggleMobile = document.getElementById('sidebarToggleMobile');
+if(sidebarToggleMobile) {
+  sidebarToggleMobile.addEventListener('click', () => {
+    const sidebar = document.getElementById('sidebar');
+    if(sidebar) sidebar.classList.toggle('mobile-visible');
+  });
+}
 
 /* ===================== Boot ===================== */
 Promise.resolve(checkLoginStatus()).then(() => {
   buildEduDropdown();
   applyLang();
-  if(currentTrackId && TRACKS[currentTrackId]){
-    document.getElementById('hubWrap').style.display = 'none';
-    document.getElementById('trackWrap').style.display = 'grid';
+  if(currentTrackId && typeof TRACKS !== 'undefined' && TRACKS[currentTrackId]){
+    const hubWrap = document.getElementById('hubWrap');
+    if(hubWrap) hubWrap.style.display = 'none';
+    const trackWrap = document.getElementById('trackWrap');
+    if(trackWrap) trackWrap.style.display = 'grid';
+    
     const track = TRACKS[currentTrackId];
     const trackTitle = currentLang === 'en' && track.title_en ? track.title_en : track.title;
-    document.getElementById('pageEyebrow').textContent = track.type === 'leveled'
-      ? (currentLang==='en' ? 'Full Learning Path' : 'مسار تعليمي متكامل')
-      : (currentLang==='en' ? 'Learning Track' : 'مسار تعليمي');
-    document.getElementById('pageMainTitle').textContent = track.icon + ' ' + trackTitle;
-    document.getElementById('pageSubtitle').textContent = track.type === 'leveled'
-      ? (currentLang==='en' ? '3 levels, each with its own lessons and level exam.' : '3 مستويات، كل مستوى له دروسه واختبار اجتياز خاص به.')
-      : (currentLang==='en' ? `${track.lessons.length} lessons — complete them in any order you like.` : `${track.lessons.length} دروس — أكملها بالترتيب حسب رغبتك.`);
+    
+    const pEyebrow = document.getElementById('pageEyebrow');
+    if(pEyebrow) {
+      pEyebrow.textContent = track.type === 'leveled'
+        ? (currentLang==='en' ? 'Full Learning Path' : 'مسار تعليمي متكامل')
+        : (currentLang==='en' ? 'Learning Track' : 'مسار تعليمي');
+    }
+    
+    const pTitle = document.getElementById('pageMainTitle');
+    if(pTitle) pTitle.textContent = (track.icon || '📚') + ' ' + trackTitle;
+    
+    const pSub = document.getElementById('pageSubtitle');
+    if(pSub) {
+      pSub.textContent = track.type === 'leveled'
+        ? (currentLang==='en' ? '3 levels, each with its own lessons and level exam.' : '3 مستويات، كل مستوى له دروسه واختبار اجتياز خاص به.')
+        : (currentLang==='en' ? `${track.lessons ? track.lessons.length : 0} lessons — complete them in any order you like.` : `${track.lessons ? track.lessons.length : 0} دروس — أكملها بالترتيب حسب رغبتك.`);
+    }
+    
     buildSidebar();
     render();
   } else {
-    document.getElementById('hubWrap').style.display = 'block';
-    document.getElementById('trackWrap').style.display = 'none';
+    const hubWrap = document.getElementById('hubWrap');
+    if(hubWrap) hubWrap.style.display = 'block';
+    const trackWrap = document.getElementById('trackWrap');
+    if(trackWrap) trackWrap.style.display = 'none';
     renderHub();
   }
 });
